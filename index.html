@@ -196,6 +196,32 @@
     .sc-icon { font-size:38px; margin-bottom:14px; display:block; position:relative; z-index:1; }
     .sc-title { font-size:16px; font-weight:700; color:var(--dark2); margin-bottom:8px; position:relative; z-index:1; transition:color 0.35s; }
     .sc-desc { font-size:13px; color:var(--text2); line-height:1.7; position:relative; z-index:1; transition:color 0.35s; }
+    .order-btn {
+      display:inline-flex; align-items:center; gap:7px;
+      margin-top:16px; padding:9px 18px; border-radius:50px;
+      background:#25D366; color:white; font-size:12px; font-weight:700;
+      text-decoration:none; transition:all 0.3s; position:relative; z-index:2;
+      box-shadow:0 3px 12px rgba(37,211,102,0.3);
+    }
+    .order-btn:hover { background:#128C7E; transform:translateY(-2px); box-shadow:0 6px 20px rgba(37,211,102,0.4); }
+    .service-card:hover .order-btn { background:rgba(0,0,0,0.2); box-shadow:none; }
+    .service-card:hover .order-btn:hover { background:rgba(0,0,0,0.35); }
+    .dc-order-btn {
+      display:inline-flex; align-items:center; gap:7px;
+      margin-top:16px; padding:9px 18px; border-radius:50px;
+      background:#25D366; color:white; font-size:12px; font-weight:700;
+      text-decoration:none; transition:all 0.3s;
+      box-shadow:0 3px 12px rgba(37,211,102,0.2);
+    }
+    .dc-order-btn:hover { background:#128C7E; transform:translateY(-2px); }
+    .soft-order-btn {
+      display:inline-flex; align-items:center; gap:7px;
+      margin-top:6px; padding:9px 18px; border-radius:50px;
+      background:#25D366; color:white; font-size:12px; font-weight:700;
+      text-decoration:none; transition:all 0.3s;
+      box-shadow:0 3px 12px rgba(37,211,102,0.2);
+    }
+    .soft-order-btn:hover { background:#128C7E; transform:translateY(-2px); }
 
     /* DIGITAL SERVICES */
     .digital-services { padding:90px 5%; background:var(--dark2); }
@@ -462,21 +488,21 @@
     <p class="section-desc">Professional quality printing for every business need — CMYK, 300DPI, bleed marks, print-ready files.</p>
   </div>
   <div class="services-grid">
-    <div class="service-card reveal"><span class="sc-num">01</span><span class="sc-icon">🪪</span><h3 class="sc-title">Business Cards</h3><p class="sc-desc">Premium quality cards — CMYK, 300DPI, print-ready. Matte, glossy, spot UV, embossed.</p></div>
-    <div class="service-card reveal"><span class="sc-num">02</span><span class="sc-icon">🖼️</span><h3 class="sc-title">Banners & Signage</h3><p class="sc-desc">Large format flex banners, standees, roll-ups, indoor & outdoor signage.</p></div>
-    <div class="service-card reveal"><span class="sc-num">03</span><span class="sc-icon">📄</span><h3 class="sc-title">Flyers & Brochures</h3><p class="sc-desc">Single page flyers, bi-fold, tri-fold brochures for marketing campaigns.</p></div>
-    <div class="service-card reveal"><span class="sc-num">04</span><span class="sc-icon">🏷️</span><h3 class="sc-title">Stickers & Labels</h3><p class="sc-desc">Custom stickers, product labels, packaging — any shape, any size, any material.</p></div>
-    <div class="service-card reveal"><span class="sc-num">05</span><span class="sc-icon">📋</span><h3 class="sc-title">Bill Books</h3><p class="sc-desc">Custom invoice books, receipt pads, NCR bill books — 2ply & 3ply available.</p></div>
-    <div class="service-card reveal"><span class="sc-num">06</span><span class="sc-icon">🪟</span><h3 class="sc-title">Window Graphics</h3><p class="sc-desc">Vinyl window stickers, frosted glass film, shopfront graphics & signage.</p></div>
-    <div class="service-card reveal"><span class="sc-num">07</span><span class="sc-icon">🚗</span><h3 class="sc-title">Vehicle Branding</h3><p class="sc-desc">Car wraps, van branding, vehicle graphics — full wrap or partial.</p></div>
-    <div class="service-card reveal"><span class="sc-num">08</span><span class="sc-icon">👕</span><h3 class="sc-title">T-Shirt Printing</h3><p class="sc-desc">Screen printing, DTG, heat transfer — bulk orders for events & corporates.</p></div>
-    <div class="service-card reveal"><span class="sc-num">09</span><span class="sc-icon">☕</span><h3 class="sc-title">Mugs & Merchandise</h3><p class="sc-desc">Branded mugs, pens, notebooks, keychains — perfect for corporate gifts.</p></div>
-    <div class="service-card reveal"><span class="sc-num">10</span><span class="sc-icon">📅</span><h3 class="sc-title">Calendars & Diaries</h3><p class="sc-desc">Custom branded calendars, desk diaries, planners for corporate gifting.</p></div>
-    <div class="service-card reveal"><span class="sc-num">11</span><span class="sc-icon">📦</span><h3 class="sc-title">Packaging & Boxes</h3><p class="sc-desc">Custom product boxes, carry bags, packaging — branded for your business.</p></div>
-    <div class="service-card reveal"><span class="sc-num">12</span><span class="sc-icon">🎪</span><h3 class="sc-title">Exhibition Stands</h3><p class="sc-desc">Trade show displays, pop-up stands, exhibition graphics & branding.</p></div>
-    <div class="service-card reveal"><span class="sc-num">13</span><span class="sc-icon">📝</span><h3 class="sc-title">Letterheads & Envelopes</h3><p class="sc-desc">Corporate stationery — branded letterheads, envelopes, folders, pads.</p></div>
-    <div class="service-card reveal"><span class="sc-num">14</span><span class="sc-icon">💌</span><h3 class="sc-title">Wedding & Event Cards</h3><p class="sc-desc">Luxury wedding invitations, event cards, custom designs with premium finishing.</p></div>
-    <div class="service-card reveal"><span class="sc-num">15</span><span class="sc-icon">🎨</span><h3 class="sc-title">Graphic Design</h3><p class="sc-desc">Professional design for all print materials — layout, typography, branding.</p></div>
+    <div class="service-card reveal"><span class="sc-num">01</span><span class="sc-icon">🪪</span><h3 class="sc-title">Business Cards</h3><p class="sc-desc">Premium quality cards — CMYK, 300DPI, print-ready. Matte, glossy, spot UV, embossed.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Business%20Cards.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
+    <div class="service-card reveal"><span class="sc-num">02</span><span class="sc-icon">🖼️</span><h3 class="sc-title">Banners & Signage</h3><p class="sc-desc">Large format flex banners, standees, roll-ups, indoor & outdoor signage.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Banners%20%26%20Signage.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
+    <div class="service-card reveal"><span class="sc-num">03</span><span class="sc-icon">📄</span><h3 class="sc-title">Flyers & Brochures</h3><p class="sc-desc">Single page flyers, bi-fold, tri-fold brochures for marketing campaigns.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Flyers%20%26%20Brochures.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
+    <div class="service-card reveal"><span class="sc-num">04</span><span class="sc-icon">🏷️</span><h3 class="sc-title">Stickers & Labels</h3><p class="sc-desc">Custom stickers, product labels, packaging — any shape, any size, any material.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Stickers%20%26%20Labels.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
+    <div class="service-card reveal"><span class="sc-num">05</span><span class="sc-icon">📋</span><h3 class="sc-title">Bill Books</h3><p class="sc-desc">Custom invoice books, receipt pads, NCR bill books — 2ply & 3ply available.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Bill%20Books.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
+    <div class="service-card reveal"><span class="sc-num">06</span><span class="sc-icon">🪟</span><h3 class="sc-title">Window Graphics</h3><p class="sc-desc">Vinyl window stickers, frosted glass film, shopfront graphics & signage.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Window%20Graphics.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
+    <div class="service-card reveal"><span class="sc-num">07</span><span class="sc-icon">🚗</span><h3 class="sc-title">Vehicle Branding</h3><p class="sc-desc">Car wraps, van branding, vehicle graphics — full wrap or partial.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Vehicle%20Branding.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
+    <div class="service-card reveal"><span class="sc-num">08</span><span class="sc-icon">👕</span><h3 class="sc-title">T-Shirt Printing</h3><p class="sc-desc">Screen printing, DTG, heat transfer — bulk orders for events & corporates.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20T-Shirt%20Printing.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
+    <div class="service-card reveal"><span class="sc-num">09</span><span class="sc-icon">☕</span><h3 class="sc-title">Mugs & Merchandise</h3><p class="sc-desc">Branded mugs, pens, notebooks, keychains — perfect for corporate gifts.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Mugs%20%26%20Merchandise.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
+    <div class="service-card reveal"><span class="sc-num">10</span><span class="sc-icon">📅</span><h3 class="sc-title">Calendars & Diaries</h3><p class="sc-desc">Custom branded calendars, desk diaries, planners for corporate gifting.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Calendars%20%26%20Diaries.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
+    <div class="service-card reveal"><span class="sc-num">11</span><span class="sc-icon">📦</span><h3 class="sc-title">Packaging & Boxes</h3><p class="sc-desc">Custom product boxes, carry bags, packaging — branded for your business.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Packaging%20%26%20Boxes.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
+    <div class="service-card reveal"><span class="sc-num">12</span><span class="sc-icon">🎪</span><h3 class="sc-title">Exhibition Stands</h3><p class="sc-desc">Trade show displays, pop-up stands, exhibition graphics & branding.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Exhibition%20Stands.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
+    <div class="service-card reveal"><span class="sc-num">13</span><span class="sc-icon">📝</span><h3 class="sc-title">Letterheads & Envelopes</h3><p class="sc-desc">Corporate stationery — branded letterheads, envelopes, folders, pads.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Letterheads%20%26%20Envelopes.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
+    <div class="service-card reveal"><span class="sc-num">14</span><span class="sc-icon">💌</span><h3 class="sc-title">Wedding & Event Cards</h3><p class="sc-desc">Luxury wedding invitations, event cards, custom designs with premium finishing.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Wedding%20%26%20Event%20Cards.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
+    <div class="service-card reveal"><span class="sc-num">15</span><span class="sc-icon">🎨</span><h3 class="sc-title">Graphic Design</h3><p class="sc-desc">Professional design for all print materials — layout, typography, branding.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Graphic%20Design.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
   </div>
 </section>
 
@@ -496,6 +522,7 @@
       <div class="dc-features">
         <span class="dc-feature">HTML/CSS</span><span class="dc-feature">WordPress</span><span class="dc-feature">React</span><span class="dc-feature">SEO</span>
       </div>
+      <a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20Website%20Development%20service.%20Please%20share%20details%20and%20pricing." class="dc-order-btn" target="_blank">💬 Order Now</a>
     </div>
     <div class="digital-card reveal">
       <span class="dc-icon">🎨</span>
@@ -505,6 +532,7 @@
       <div class="dc-features">
         <span class="dc-feature">Logo Design</span><span class="dc-feature">Brand Kit</span><span class="dc-feature">Guidelines</span>
       </div>
+      <a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20Logo%20%26%20Brand%20Design%20service.%20Please%20share%20details%20and%20pricing." class="dc-order-btn" target="_blank">💬 Order Now</a>
     </div>
     <div class="digital-card reveal">
       <span class="dc-icon">📱</span>
@@ -514,6 +542,7 @@
       <div class="dc-features">
         <span class="dc-feature">Facebook Ads</span><span class="dc-feature">Instagram Ads</span><span class="dc-feature">Pixel Setup</span><span class="dc-feature">Retargeting</span>
       </div>
+      <a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20Meta%20Ads%20service.%20Please%20share%20details%20and%20pricing." class="dc-order-btn" target="_blank">💬 Order Now</a>
     </div>
     <div class="digital-card reveal">
       <span class="dc-icon">📊</span>
@@ -523,6 +552,7 @@
       <div class="dc-features">
         <span class="dc-feature">Instagram</span><span class="dc-feature">Facebook</span><span class="dc-feature">Content</span><span class="dc-feature">Analytics</span>
       </div>
+      <a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20Social%20Media%20Management%20service.%20Please%20share%20details%20and%20pricing." class="dc-order-btn" target="_blank">💬 Order Now</a>
     </div>
     <div class="digital-card reveal">
       <span class="dc-icon">🔍</span>
@@ -532,6 +562,7 @@
       <div class="dc-features">
         <span class="dc-feature">Google Ads</span><span class="dc-feature">SEO</span><span class="dc-feature">Keywords</span>
       </div>
+      <a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20Google%20Ads%20%26%20SEO%20service.%20Please%20share%20details%20and%20pricing." class="dc-order-btn" target="_blank">💬 Order Now</a>
     </div>
     <div class="digital-card reveal">
       <span class="dc-icon">🎬</span>
@@ -541,6 +572,7 @@
       <div class="dc-features">
         <span class="dc-feature">Reels</span><span class="dc-feature">Motion Graphics</span><span class="dc-feature">Photography</span>
       </div>
+      <a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20Video%20%26%20Content%20Creation%20service.%20Please%20share%20details%20and%20pricing." class="dc-order-btn" target="_blank">💬 Order Now</a>
     </div>
   </div>
 </section>
@@ -565,6 +597,7 @@
         <li>Online Ordering Platforms</li>
         <li>HR & Payroll Systems</li>
       </ul>
+      <a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20need%20Online%20Web%20Application%20software.%20Please%20share%20details%20and%20pricing." class="soft-order-btn" target="_blank">💬 Order Now</a>
     </div>
     <div class="soft-card offline reveal">
       <div class="soft-icon">💻</div>
@@ -578,6 +611,7 @@
         <li>Printing Shop Management</li>
         <li>Warehouse Management</li>
       </ul>
+      <a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20need%20Offline%20Desktop%20Application%20software.%20Please%20share%20details%20and%20pricing." class="soft-order-btn" target="_blank">💬 Order Now</a>
     </div>
     <div class="soft-card mobile reveal">
       <div class="soft-icon">📱</div>
@@ -591,6 +625,7 @@
         <li>Staff Management Apps</li>
         <li>E-Commerce Apps</li>
       </ul>
+      <a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20need%20a%20Mobile%20App%20developed.%20Please%20share%20details%20and%20pricing." class="soft-order-btn" target="_blank">💬 Order Now</a>
     </div>
     <div class="soft-card ecom reveal">
       <div class="soft-icon">🛒</div>
@@ -604,6 +639,7 @@
         <li>Order Management</li>
         <li>Multi-vendor Marketplaces</li>
       </ul>
+      <a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20need%20an%20E-Commerce%20Online%20Store.%20Please%20share%20details%20and%20pricing." class="soft-order-btn" target="_blank">💬 Order Now</a>
     </div>
   </div>
 </section>
