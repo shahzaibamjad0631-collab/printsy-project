@@ -1,807 +1,979 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Printsy – Printing, Advertising & Digital Solutions Dubai</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-  <style>
-    :root {
-      --gold: #FFD700;
-      --gold2: #FFA500;
-      --dark: #0d0d1a;
-      --dark2: #1a1a2e;
-      --dark3: #16213e;
-      --blue: #0f3460;
-      --white: #ffffff;
-      --gray: #f8f9ff;
-      --text: #333;
-      --text2: #666;
-    }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family:'Poppins',sans-serif; color:var(--text); overflow-x:hidden; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    /* SCROLLBAR */
-    ::-webkit-scrollbar { width:6px; }
-    ::-webkit-scrollbar-track { background:#0d0d1a; }
-    ::-webkit-scrollbar-thumb { background:var(--gold); border-radius:3px; }
+<!-- ═══ SEO META TAGS ═══ -->
+<title>Printsy Dubai | Premium Business Cards, Flyers & Printing Services UAE</title>
+<meta name="description" content="Printsy Dubai — Premium printing services including business cards, flyers, banners, brochures & Spot UV cards. Fast 48hr delivery across Dubai. Powered by Diamond Printing Press. Order on WhatsApp +971581464106.">
+<meta name="keywords" content="printing services Dubai, business cards Dubai, flyer printing Dubai, digital marketing agency Dubai, Meta Ads Dubai, Google Ads Dubai, SEO Dubai, website development Dubai, social media marketing Dubai, web app development Dubai, brand identity Dubai, printing company Dubai">
+<meta name="author" content="Printsy – Printing & Advertising Dubai">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0A1628">
+<link rel="canonical" href="https://shahzaibamjad0631-collab.github.io/printsy-project/">
 
-    /* LOADER */
-    .loader {
-      position:fixed; inset:0; background:var(--dark);
-      display:flex; align-items:center; justify-content:center;
-      z-index:9999; transition:opacity 0.6s, visibility 0.6s;
-    }
-    .loader.hide { opacity:0; visibility:hidden; }
-    .loader-inner { text-align:center; }
-    .loader-logo { font-size:42px; font-weight:900; color:var(--gold); animation:pulse 1s infinite; }
-    .loader-logo span { color:white; }
-    .loader-bar { width:200px; height:3px; background:rgba(255,255,255,0.1); border-radius:2px; margin:16px auto 0; overflow:hidden; }
-    .loader-fill { height:100%; background:var(--gold); animation:load 1.8s ease forwards; }
-    @keyframes load { from{width:0} to{width:100%} }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
+<!-- ═══ OPEN GRAPH (WhatsApp / Facebook Preview) ═══ -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shahzaibamjad0631-collab.github.io/printsy-project/">
+<meta property="og:title" content="Printsy Dubai | Premium Printing Services UAE">
+<meta property="og:description" content="Business cards, flyers, banners & more. Fast 48hr delivery across Dubai. Order on WhatsApp now!">
+<meta property="og:image" content="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200&auto=format&fit=crop">
+<meta property="og:locale" content="en_AE">
+<meta property="og:site_name" content="Printsy Dubai">
 
-    /* NAV */
-    nav {
-      background:rgba(13,13,26,0.97);
-      backdrop-filter:blur(20px);
-      padding:0 5%;
-      display:flex; justify-content:space-between; align-items:center;
-      position:fixed; top:0; width:100%; z-index:1000;
-      height:70px;
-      border-bottom:1px solid rgba(255,215,0,0.15);
-      transition:all 0.3s;
-    }
-    nav.scrolled { box-shadow:0 4px 30px rgba(0,0,0,0.5); }
-    .nav-logo { color:var(--gold); font-size:26px; font-weight:900; letter-spacing:1px; text-decoration:none; }
-    .nav-logo span { color:white; }
-    .nav-logo sup { font-size:10px; color:var(--gold); vertical-align:super; }
-    .nav-links { display:flex; align-items:center; gap:8px; }
-    .nav-links a {
-      color:rgba(255,255,255,0.7); text-decoration:none;
-      font-size:13px; font-weight:500; padding:6px 14px; border-radius:6px;
-      transition:all 0.2s;
-    }
-    .nav-links a:hover { color:var(--gold); background:rgba(255,215,0,0.08); }
-    .nav-cta {
-      background:linear-gradient(135deg,var(--gold),var(--gold2)) !important;
-      color:var(--dark) !important; font-weight:700 !important;
-      border-radius:50px !important; padding:8px 20px !important;
-    }
-    .nav-cta:hover { transform:translateY(-1px); box-shadow:0 4px 15px rgba(255,215,0,0.4) !important; background:rgba(0,0,0,0) !important; }
-    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
-    .hamburger span { width:24px; height:2px; background:var(--gold); border-radius:2px; transition:all 0.3s; }
+<!-- ═══ TWITTER CARD ═══ -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Printsy Dubai | Premium Printing Services">
+<meta name="twitter:description" content="Business cards, flyers, banners. Fast 48hr delivery Dubai.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200&auto=format&fit=crop">
 
-    /* HERO */
-    .hero {
-      min-height:100vh;
-      background:linear-gradient(135deg,var(--dark) 0%,var(--dark2) 40%,var(--dark3) 70%,var(--blue) 100%);
-      display:flex; align-items:center; justify-content:center;
-      text-align:center; padding:120px 20px 80px; position:relative; overflow:hidden;
-    }
-    .hero-bg-circles { position:absolute; inset:0; pointer-events:none; }
-    .hero-bg-circles span {
-      position:absolute; border-radius:50%;
-      background:radial-gradient(circle,rgba(255,215,0,0.08),transparent);
-      animation:float 6s ease-in-out infinite;
-    }
-    .hero-bg-circles span:nth-child(1) { width:600px;height:600px;top:-200px;right:-200px;animation-delay:0s; }
-    .hero-bg-circles span:nth-child(2) { width:400px;height:400px;bottom:-100px;left:-100px;animation-delay:2s; }
-    .hero-bg-circles span:nth-child(3) { width:300px;height:300px;top:50%;left:10%;animation-delay:4s; }
-    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
+<!-- ═══ LOCAL BUSINESS SCHEMA ═══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Printsy – Printing & Digital Agency",
+  "description": "Premium printing and digital agency services in Dubai. Business cards, flyers, banners, Meta Ads, Google Ads, SEO, website development and social media marketing.",
+  "url": "https://shahzaibamjad0631-collab.github.io/printsy-project/",
+  "telephone": "+971581464106",
+  "email": "printsydubai@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Dubai",
+    "addressCountry": "AE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "25.2048",
+    "longitude": "55.2708"
+  },
+  "openingHours": "Mo-Sa 09:00-19:00",
+  "priceRange": "AED 99 - AED 499",
+  "image": "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200",
+  "sameAs": [],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Printing Services",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Business Cards Dubai"}, "price": "110", "priceCurrency": "AED"},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Flyer Printing Dubai"}, "price": "130", "priceCurrency": "AED"},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Spot UV Cards Dubai"}, "price": "199", "priceCurrency": "AED"}
+    ]
+  }
+}
+</script>
 
-    .hero-content { position:relative; z-index:2; max-width:850px; }
-    .hero-badge {
-      display:inline-flex; align-items:center; gap:8px;
-      background:rgba(255,215,0,0.12); border:1px solid rgba(255,215,0,0.4);
-      color:var(--gold); padding:8px 22px; border-radius:50px;
-      font-size:12px; font-weight:700; letter-spacing:2px; margin-bottom:28px;
-      animation:fadeDown 0.8s ease both;
-    }
-    .hero h1 {
-      font-size:62px; font-weight:900; color:white; line-height:1.05;
-      margin-bottom:20px; animation:fadeUp 0.8s ease 0.2s both;
-    }
-    .hero h1 .gold { color:var(--gold); }
-    .hero h1 .outline { -webkit-text-stroke:2px var(--gold); color:transparent; }
-    .hero-sub {
-      font-size:17px; color:rgba(255,255,255,0.65); max-width:600px;
-      margin:0 auto 40px; line-height:1.8; animation:fadeUp 0.8s ease 0.4s both;
-    }
-    .hero-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; animation:fadeUp 0.8s ease 0.6s both; }
-    .btn-gold {
-      background:linear-gradient(135deg,var(--gold),var(--gold2));
-      color:var(--dark); padding:16px 40px; border-radius:50px;
-      font-weight:800; font-size:15px; text-decoration:none;
-      transition:all 0.3s; display:flex; align-items:center; gap:8px;
-      box-shadow:0 4px 20px rgba(255,215,0,0.3);
-    }
-    .btn-gold:hover { transform:translateY(-3px); box-shadow:0 8px 30px rgba(255,215,0,0.5); }
-    .btn-ghost {
-      border:2px solid rgba(255,255,255,0.3); color:white;
-      padding:16px 40px; border-radius:50px; font-weight:600;
-      font-size:15px; text-decoration:none; transition:all 0.3s;
-      display:flex; align-items:center; gap:8px;
-    }
-    .btn-ghost:hover { border-color:var(--gold); color:var(--gold); transform:translateY(-3px); }
-    .hero-scroll {
-      position:absolute; bottom:32px; left:50%; transform:translateX(-50%);
-      color:rgba(255,255,255,0.4); font-size:11px; letter-spacing:2px;
-      display:flex; flex-direction:column; align-items:center; gap:8px;
-      animation:bounce 2s infinite;
-    }
-    .hero-scroll::after { content:''; width:1px; height:40px; background:rgba(255,215,0,0.4); }
-    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-8px)} }
-    @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
-    @keyframes fadeDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-    /* STATS */
-    .stats {
-      background:linear-gradient(135deg,var(--gold),var(--gold2));
-      padding:36px 5%; display:flex; justify-content:center;
-      gap:0; flex-wrap:wrap;
-    }
-    .stat-item {
-      text-align:center; padding:8px 48px;
-      border-right:1px solid rgba(0,0,0,0.15);
-      flex:1; min-width:140px;
-    }
-    .stat-item:last-child { border-right:none; }
-    .stat-item h3 { font-size:36px; font-weight:900; color:var(--dark); line-height:1; }
-    .stat-item p { font-size:11px; font-weight:700; color:rgba(0,0,0,0.6); letter-spacing:2px; margin-top:4px; }
+<style>
+:root{
+  --navy:#0A1628;--navy2:#1B2A4A;--navy3:#243556;
+  --gold:#D4A017;--gold2:#F0C040;--gold3:#FDF3D0;
+  --white:#FAFAF8;--gray:#8A8F9A;--graylt:#F2F2EF;
+  --wa:#25D366;
+  --fd:'Playfair Display',serif;--fb:'DM Sans',sans-serif;--fm:'Space Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:var(--fb);background:var(--white);color:var(--navy);overflow-x:hidden;cursor:none}
 
-    /* SECTION COMMON */
-    .section-header { text-align:center; margin-bottom:56px; }
-    .section-tag {
-      display:inline-block; font-size:11px; font-weight:700;
-      letter-spacing:3px; text-transform:uppercase; color:var(--gold2);
-      background:rgba(255,165,0,0.1); padding:5px 16px; border-radius:50px;
-      margin-bottom:14px; border:1px solid rgba(255,165,0,0.2);
-    }
-    .section-title { font-size:40px; font-weight:900; color:var(--dark2); line-height:1.15; margin-bottom:14px; }
-    .section-title .gold { color:var(--gold2); }
-    .section-title .dark { color:var(--dark); }
-    .section-desc { font-size:16px; color:var(--text2); max-width:520px; margin:0 auto; line-height:1.8; }
+/* CURSOR */
+#cur{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .25s,height .25s;mix-blend-mode:difference}
+#cur-r{position:fixed;width:40px;height:40px;border:1.5px solid var(--gold);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);opacity:.5}
+body.hov #cur{width:20px;height:20px}
+body.hov #cur-r{width:64px;height:64px;opacity:.15}
 
-    /* PRINT SERVICES */
-    .print-services { padding:90px 5%; background:var(--gray); }
-    .services-grid {
-      display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-      gap:22px; max-width:1200px; margin:0 auto;
-    }
-    .service-card {
-      background:white; border-radius:18px; padding:32px 24px;
-      box-shadow:0 2px 20px rgba(0,0,0,0.06);
-      transition:all 0.35s cubic-bezier(0.4,0,0.2,1);
-      border:1px solid rgba(0,0,0,0.05);
-      position:relative; overflow:hidden; cursor:default;
-    }
-    .service-card::before {
-      content:''; position:absolute; inset:0;
-      background:linear-gradient(135deg,var(--gold),var(--gold2));
-      opacity:0; transition:opacity 0.35s;
-    }
-    .service-card:hover { transform:translateY(-8px); box-shadow:0 20px 50px rgba(255,165,0,0.2); border-color:var(--gold); }
-    .service-card:hover::before { opacity:1; }
-    .service-card:hover .sc-icon,
-    .service-card:hover .sc-title,
-    .service-card:hover .sc-desc { color:var(--dark) !important; position:relative; z-index:1; }
-    .service-card:hover .sc-num { color:rgba(0,0,0,0.15) !important; }
-    .sc-num {
-      position:absolute; top:16px; right:18px;
-      font-size:42px; font-weight:900; color:rgba(0,0,0,0.04);
-      line-height:1; transition:color 0.35s; font-family:monospace;
-    }
-    .sc-icon { font-size:38px; margin-bottom:14px; display:block; position:relative; z-index:1; }
-    .sc-title { font-size:16px; font-weight:700; color:var(--dark2); margin-bottom:8px; position:relative; z-index:1; transition:color 0.35s; }
-    .sc-desc { font-size:13px; color:var(--text2); line-height:1.7; position:relative; z-index:1; transition:color 0.35s; }
-    .order-btn {
-      display:inline-flex; align-items:center; gap:7px;
-      margin-top:16px; padding:9px 18px; border-radius:50px;
-      background:#25D366; color:white; font-size:12px; font-weight:700;
-      text-decoration:none; transition:all 0.3s; position:relative; z-index:2;
-      box-shadow:0 3px 12px rgba(37,211,102,0.3);
-    }
-    .order-btn:hover { background:#128C7E; transform:translateY(-2px); box-shadow:0 6px 20px rgba(37,211,102,0.4); }
-    .service-card:hover .order-btn { background:rgba(0,0,0,0.2); box-shadow:none; }
-    .service-card:hover .order-btn:hover { background:rgba(0,0,0,0.35); }
-    .dc-order-btn {
-      display:inline-flex; align-items:center; gap:7px;
-      margin-top:16px; padding:9px 18px; border-radius:50px;
-      background:#25D366; color:white; font-size:12px; font-weight:700;
-      text-decoration:none; transition:all 0.3s;
-      box-shadow:0 3px 12px rgba(37,211,102,0.2);
-    }
-    .dc-order-btn:hover { background:#128C7E; transform:translateY(-2px); }
-    .soft-order-btn {
-      display:inline-flex; align-items:center; gap:7px;
-      margin-top:6px; padding:9px 18px; border-radius:50px;
-      background:#25D366; color:white; font-size:12px; font-weight:700;
-      text-decoration:none; transition:all 0.3s;
-      box-shadow:0 3px 12px rgba(37,211,102,0.2);
-    }
-    .soft-order-btn:hover { background:#128C7E; transform:translateY(-2px); }
+/* PROGRESS */
+#pb{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold2),var(--gold));z-index:99997;width:0;box-shadow:0 0 12px var(--gold);transition:width .1s linear}
 
-    /* DIGITAL SERVICES */
-    .digital-services { padding:90px 5%; background:var(--dark2); }
-    .digital-services .section-title { color:white; }
-    .digital-services .section-desc { color:rgba(255,255,255,0.5); }
-    .digital-grid {
-      display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-      gap:24px; max-width:1200px; margin:0 auto;
-    }
-    .digital-card {
-      background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.08);
-      border-radius:18px; padding:36px 28px;
-      transition:all 0.35s; position:relative; overflow:hidden;
-    }
-    .digital-card::after {
-      content:''; position:absolute; bottom:0; left:0; right:0;
-      height:3px; background:linear-gradient(90deg,var(--gold),var(--gold2));
-      transform:scaleX(0); transition:transform 0.35s; transform-origin:left;
-    }
-    .digital-card:hover { background:rgba(255,215,0,0.06); border-color:rgba(255,215,0,0.3); transform:translateY(-6px); }
-    .digital-card:hover::after { transform:scaleX(1); }
-    .dc-icon { font-size:42px; margin-bottom:18px; display:block; }
-    .dc-badge {
-      display:inline-block; font-size:9px; font-weight:700; letter-spacing:2px;
-      text-transform:uppercase; padding:3px 10px; border-radius:50px; margin-bottom:12px;
-    }
-    .badge-new { background:rgba(74,222,128,0.15); color:#4ade80; border:1px solid rgba(74,222,128,0.3); }
-    .badge-hot { background:rgba(251,113,133,0.15); color:#fb7185; border:1px solid rgba(251,113,133,0.3); }
-    .badge-pro { background:rgba(255,215,0,0.15); color:var(--gold); border:1px solid rgba(255,215,0,0.3); }
-    .dc-title { font-size:18px; font-weight:700; color:white; margin-bottom:10px; }
-    .dc-desc { font-size:13px; color:rgba(255,255,255,0.5); line-height:1.7; }
-    .dc-features { margin-top:16px; display:flex; flex-wrap:wrap; gap:6px; }
-    .dc-feature {
-      font-size:10px; padding:3px 10px; border-radius:50px;
-      background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.5);
-      border:1px solid rgba(255,255,255,0.08);
-    }
+/* LOADER */
+#loader{position:fixed;inset:0;background:var(--navy);z-index:99990;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;overflow:hidden}
+#loader::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(212,160,23,.08),transparent 60%)}
+#loader::after{content:'';position:absolute;width:600px;height:600px;border-radius:50%;border:1px solid rgba(212,160,23,.06);animation:ldRing 3s linear infinite}
+@keyframes ldRing{to{transform:rotate(360deg) scale(1.2)}}
+.ld-logo{font-family:var(--fd);font-size:72px;color:transparent;-webkit-text-stroke:1px var(--gold);letter-spacing:-2px;animation:ldStroke 2.2s .2s forwards;position:relative;z-index:1}
+@keyframes ldStroke{
+  0%{color:transparent;-webkit-text-stroke:1px var(--gold);letter-spacing:14px;opacity:0;filter:blur(10px)}
+  50%{opacity:1;filter:blur(0);letter-spacing:-2px}
+  100%{color:var(--gold);-webkit-text-stroke:1px transparent}
+}
+.ld-sub{font-family:var(--fm);font-size:10px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.3);opacity:0;animation:fadeUp .6s 1.2s forwards;position:relative;z-index:1}
+.ld-bar{width:280px;height:1px;background:rgba(255,255,255,.06);overflow:hidden;position:relative;z-index:1}
+.ld-fill{height:100%;background:linear-gradient(90deg,transparent,var(--gold),var(--gold2));animation:ldBar 2.2s .3s ease forwards;box-shadow:0 0 16px var(--gold)}
+@keyframes ldBar{from{width:0}to{width:100%}}
+.ld-pct{font-family:var(--fm);font-size:12px;color:var(--gold);opacity:0;animation:fadeUp .4s 1.6s forwards;position:relative;z-index:1;letter-spacing:2px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 
-    /* SOFTWARE */
-    .software { padding:90px 5%; background:white; }
-    .software-grid {
-      display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-      gap:24px; max-width:1100px; margin:0 auto;
-    }
-    .soft-card {
-      border-radius:18px; padding:36px 28px;
-      transition:all 0.35s; position:relative; overflow:hidden;
-      border:2px solid rgba(0,0,0,0.06);
-    }
-    .soft-card:hover { transform:translateY(-6px); }
-    .soft-card.online { background:linear-gradient(135deg,#0f3460,#16213e); border-color:#0f3460; }
-    .soft-card.offline { background:linear-gradient(135deg,#1a0533,#2d1b4e); border-color:#4a2080; }
-    .soft-card.mobile { background:linear-gradient(135deg,#0a3d2b,#1a5c40); border-color:#2ecc71; }
-    .soft-card.ecom { background:linear-gradient(135deg,#3d0a0a,#5c1a1a); border-color:#e74c3c; }
-    .soft-icon { font-size:44px; margin-bottom:16px; }
-    .soft-tag {
-      display:inline-block; font-size:9px; font-weight:700; letter-spacing:2px;
-      text-transform:uppercase; padding:3px 10px; border-radius:50px;
-      background:rgba(255,255,255,0.15); color:rgba(255,255,255,0.8);
-      margin-bottom:14px;
-    }
-    .soft-title { font-size:20px; font-weight:800; color:white; margin-bottom:10px; }
-    .soft-desc { font-size:13px; color:rgba(255,255,255,0.6); line-height:1.7; margin-bottom:16px; }
-    .soft-list { list-style:none; }
-    .soft-list li { font-size:12px; color:rgba(255,255,255,0.6); padding:4px 0; display:flex; align-items:center; gap:8px; }
-    .soft-list li::before { content:'→'; color:var(--gold); font-weight:700; }
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 60px;height:80px;display:flex;align-items:center;justify-content:space-between;transition:all .5s}
+nav.sc{background:rgba(10,22,40,.96);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border-bottom:1px solid rgba(212,160,23,.08);box-shadow:0 4px 40px rgba(0,0,0,.2)}
+.n-logo{font-family:var(--fd);font-size:27px;color:var(--white);text-decoration:none;letter-spacing:-.5px;display:flex;flex-direction:column;line-height:1;opacity:0;animation:fadeUp .6s 2.5s forwards}
+.n-logo span{font-family:var(--fb);font-size:9px;letter-spacing:3.5px;color:var(--gold);text-transform:uppercase;margin-top:3px}
+.n-links{display:flex;gap:36px;list-style:none;opacity:0;animation:fadeUp .6s 2.7s forwards}
+.n-links a{font-size:13px;letter-spacing:.4px;color:rgba(255,255,255,.6);text-decoration:none;position:relative;padding-bottom:4px;transition:color .3s}
+.n-links a::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:1px;background:var(--gold);transition:all .4s cubic-bezier(.34,1.56,.64,1)}
+.n-links a:hover{color:var(--white)}
+.n-links a:hover::after{width:100%;left:0}
+.n-cta{background:var(--gold);color:var(--navy);padding:11px 26px;border-radius:5px;font-size:13px;font-weight:500;text-decoration:none;opacity:0;animation:fadeUp .6s 2.9s forwards;transition:all .3s;overflow:hidden;position:relative}
+.n-cta::after{content:'';position:absolute;inset:0;background:var(--white);transform:scaleX(0);transform-origin:right;transition:transform .45s ease}
+.n-cta:hover::after{transform:scaleX(1);transform-origin:left}
+.n-cta span{position:relative;z-index:1}
+.hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hbg span{width:24px;height:1.5px;background:var(--white);display:block;transition:all .3s}
+.hbg.op span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hbg.op span:nth-child(2){opacity:0}
+.hbg.op span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mob{display:none;position:fixed;top:80px;left:0;right:0;background:rgba(10,22,40,.98);backdrop-filter:blur(24px);flex-direction:column;z-index:999;border-bottom:1px solid rgba(212,160,23,.1)}
+.mob a{color:rgba(255,255,255,.7);font-size:17px;text-decoration:none;padding:18px 32px;border-bottom:1px solid rgba(255,255,255,.04);display:block;transition:all .3s}
+.mob a:hover{color:var(--gold);padding-left:44px}
+.mob.op{display:flex}
 
-    /* WHY US */
-    .why { padding:90px 5%; background:var(--gray); }
-    .why-grid {
-      display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-      gap:24px; max-width:1100px; margin:0 auto;
-    }
-    .why-card {
-      background:white; border-radius:16px; padding:32px 24px; text-align:center;
-      box-shadow:0 2px 20px rgba(0,0,0,0.05); transition:all 0.3s;
-      border-bottom:3px solid transparent;
-    }
-    .why-card:hover { transform:translateY(-6px); border-bottom-color:var(--gold); box-shadow:0 12px 40px rgba(0,0,0,0.1); }
-    .why-icon { font-size:44px; margin-bottom:16px; }
-    .why-title { font-size:16px; font-weight:700; color:var(--dark2); margin-bottom:8px; }
-    .why-desc { font-size:13px; color:var(--text2); line-height:1.7; }
+/* HERO */
+#hero{min-height:100vh;background:var(--navy);display:flex;align-items:center;position:relative;overflow:hidden;padding:100px 60px 80px}
 
-    /* PROCESS */
-    .process { padding:90px 5%; background:var(--dark); }
-    .process .section-title { color:white; }
-    .process .section-desc { color:rgba(255,255,255,0.5); }
-    .process-steps {
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      gap:0; max-width:1000px; margin:0 auto; position:relative;
-    }
-    .process-steps::before {
-      content:''; position:absolute; top:36px; left:10%; right:10%;
-      height:2px; background:linear-gradient(90deg,var(--gold),var(--gold2));
-      z-index:0;
-    }
-    .process-step { text-align:center; padding:0 20px; position:relative; z-index:1; }
-    .step-num {
-      width:72px; height:72px; border-radius:50%;
-      background:linear-gradient(135deg,var(--gold),var(--gold2));
-      display:flex; align-items:center; justify-content:center;
-      font-size:24px; font-weight:900; color:var(--dark);
-      margin:0 auto 20px; box-shadow:0 4px 20px rgba(255,215,0,0.3);
-    }
-    .step-title { font-size:15px; font-weight:700; color:white; margin-bottom:8px; }
-    .step-desc { font-size:12px; color:rgba(255,255,255,0.5); line-height:1.6; }
+/* Animated grid */
+.h-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(212,160,23,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(212,160,23,.025) 1px,transparent 1px);background-size:80px 80px;animation:gridMove 25s linear infinite}
+@keyframes gridMove{from{background-position:0 0}to{background-position:80px 80px}}
 
-    /* CONTACT */
-    .contact { padding:90px 5%; background:white; }
-    .contact-wrapper {
-      max-width:1000px; margin:0 auto;
-      display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;
-    }
-    .contact-info-side h3 { font-size:32px; font-weight:800; color:var(--dark2); margin-bottom:12px; }
-    .contact-info-side p { color:var(--text2); line-height:1.8; margin-bottom:32px; }
-    .contact-cards { display:flex; flex-direction:column; gap:14px; }
-    .contact-card {
-      display:flex; align-items:center; gap:16px;
-      background:var(--gray); border-radius:14px; padding:18px 22px;
-      text-decoration:none; color:var(--text); transition:all 0.3s;
-      border:1px solid rgba(0,0,0,0.05);
-    }
-    .contact-card:hover { background:var(--dark2); color:white; transform:translateX(6px); }
-    .contact-card:hover .cc-label { color:rgba(255,255,255,0.5); }
-    .cc-icon { font-size:28px; width:50px; text-align:center; }
-    .cc-label { font-size:11px; color:var(--text2); margin-bottom:2px; letter-spacing:1px; }
-    .cc-val { font-size:15px; font-weight:600; }
-    .contact-map {
-      background:linear-gradient(135deg,var(--dark2),var(--blue));
-      border-radius:24px; padding:48px 36px; color:white; text-align:center;
-    }
-    .contact-map .big-icon { font-size:64px; margin-bottom:20px; }
-    .contact-map h4 { font-size:22px; font-weight:800; margin-bottom:8px; }
-    .contact-map p { color:rgba(255,255,255,0.6); font-size:14px; margin-bottom:28px; line-height:1.7; }
-    .whatsapp-btn {
-      display:inline-flex; align-items:center; gap:10px;
-      background:linear-gradient(135deg,#25D366,#128C7E);
-      color:white; padding:14px 32px; border-radius:50px;
-      text-decoration:none; font-weight:700; font-size:15px;
-      box-shadow:0 4px 20px rgba(37,211,102,0.4); transition:all 0.3s;
-    }
-    .whatsapp-btn:hover { transform:translateY(-3px); box-shadow:0 8px 30px rgba(37,211,102,0.5); }
+/* Orbs */
+.orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.09;animation:orbDrift 16s ease-in-out infinite}
+.o1{width:800px;height:800px;background:var(--gold);top:-250px;right:-250px}
+.o2{width:600px;height:600px;background:#2A5BD7;bottom:-200px;left:-200px;animation-delay:-8s}
+.o3{width:300px;height:300px;background:var(--gold2);top:35%;left:30%;animation-delay:-5s;opacity:.05}
+@keyframes orbDrift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(50px,-60px) scale(1.12)}66%{transform:translate(-30px,30px) scale(.9)}}
 
-    /* FOOTER */
-    footer {
-      background:var(--dark);
-      border-top:1px solid rgba(255,215,0,0.15);
-      padding:40px 5% 24px;
-    }
-    .footer-top {
-      display:flex; justify-content:space-between; align-items:center;
-      flex-wrap:wrap; gap:20px; margin-bottom:28px;
-      padding-bottom:28px; border-bottom:1px solid rgba(255,255,255,0.06);
-    }
-    .footer-logo { font-size:28px; font-weight:900; color:var(--gold); }
-    .footer-logo span { color:white; }
-    .footer-tagline { color:rgba(255,255,255,0.4); font-size:13px; margin-top:4px; }
-    .footer-links { display:flex; gap:24px; flex-wrap:wrap; }
-    .footer-links a { color:rgba(255,255,255,0.5); text-decoration:none; font-size:13px; transition:color 0.2s; }
-    .footer-links a:hover { color:var(--gold); }
-    .footer-bottom { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
-    .footer-copy { font-size:12px; color:rgba(255,255,255,0.3); }
-    .footer-copy strong { color:var(--gold); }
-    .footer-socials { display:flex; gap:10px; }
-    .social-btn {
-      width:34px; height:34px; border-radius:8px;
-      background:rgba(255,255,255,0.06); display:flex;
-      align-items:center; justify-content:center; text-decoration:none;
-      font-size:16px; transition:all 0.2s; border:1px solid rgba(255,255,255,0.08);
-    }
-    .social-btn:hover { background:var(--gold); transform:translateY(-2px); }
+/* Particles */
+.pts{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.pt{position:absolute;border-radius:50%;opacity:0;animation:ptUp var(--d) var(--e) infinite ease-out}
+@keyframes ptUp{0%{opacity:0;transform:translateY(0) scale(0)}15%{opacity:.8}85%{opacity:.1}100%{opacity:0;transform:translateY(-200px) scale(2.5)}}
 
-    /* BACK TO TOP */
-    .back-top {
-      position:fixed; bottom:28px; right:28px;
-      width:46px; height:46px; border-radius:50%;
-      background:linear-gradient(135deg,var(--gold),var(--gold2));
-      display:flex; align-items:center; justify-content:center;
-      font-size:20px; cursor:pointer; z-index:999;
-      box-shadow:0 4px 20px rgba(255,215,0,0.4);
-      opacity:0; visibility:hidden; transition:all 0.3s;
-      text-decoration:none;
-    }
-    .back-top.show { opacity:1; visibility:visible; }
-    .back-top:hover { transform:translateY(-3px) scale(1.1); }
+/* Hero content */
+.hc{max-width:680px;position:relative;z-index:2}
+.h-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,160,23,.1);border:1px solid rgba(212,160,23,.2);color:var(--gold);font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:8px 20px;border-radius:100px;margin-bottom:36px;opacity:0;animation:fadeUp .6s 2.8s forwards}
+.h-bdot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:bdotPulse 2s infinite}
+@keyframes bdotPulse{0%,100%{box-shadow:0 0 0 0 rgba(212,160,23,.5)}50%{box-shadow:0 0 0 8px rgba(212,160,23,0)}}
 
-    /* ANIMATIONS */
-    .reveal {
-      opacity:0; transform:translateY(30px);
-      transition:opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible { opacity:1; transform:translateY(0); }
+.h-title{font-family:var(--fd);font-size:clamp(52px,6.2vw,96px);line-height:.95;letter-spacing:-3px;color:var(--white);margin-bottom:30px}
+.h-title .wd{display:inline-block;overflow:hidden;margin-right:16px;vertical-align:bottom}
+.h-title .ch{display:inline-block;transform:translateY(110%);opacity:0;animation:chUp .75s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes chUp{to{transform:translateY(0);opacity:1}}
+.h-title .gw{color:var(--gold);font-style:italic;position:relative}
+.h-title .gw::after{content:'';position:absolute;left:0;bottom:-6px;width:100%;height:2px;background:var(--gold);opacity:.4;border-radius:2px}
 
-    /* MOBILE */
-    @media(max-width:768px) {
-      .hero h1 { font-size:38px; }
-      .nav-links { display:none; }
-      .hamburger { display:flex; }
-      .section-title { font-size:28px; }
-      .contact-wrapper { grid-template-columns:1fr; }
-      .process-steps::before { display:none; }
-      .stat-item { padding:12px 24px; border-right:none; border-bottom:1px solid rgba(0,0,0,0.1); }
-      .stat-item:last-child { border-bottom:none; }
-    }
-  </style>
+.h-sub{font-size:17px;line-height:1.8;color:rgba(255,255,255,.5);margin-bottom:46px;max-width:520px;opacity:0;animation:fadeUp .7s 3.3s forwards}
+.h-btns{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:64px;opacity:0;animation:fadeUp .7s 3.5s forwards}
+
+.bwa{display:inline-flex;align-items:center;gap:10px;background:var(--wa);color:#fff;padding:16px 32px;border-radius:7px;font-size:14px;font-weight:500;text-decoration:none;transition:all .4s;position:relative;overflow:hidden}
+.bwa::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.14);transform:translateX(-100%) skewX(-15deg);transition:transform .55s}
+.bwa:hover::before{transform:translateX(120%) skewX(-15deg)}
+.bwa:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(37,211,102,.4)}
+
+.bgh{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(212,160,23,.35);color:var(--gold);padding:16px 32px;border-radius:7px;font-size:14px;text-decoration:none;transition:all .3s;backdrop-filter:blur(6px)}
+.bgh:hover{background:rgba(212,160,23,.09);border-color:var(--gold);transform:translateY(-4px)}
+
+.h-trust{display:flex;align-items:center;gap:14px;opacity:0;animation:fadeUp .6s 3.7s forwards}
+.h-tl{width:40px;height:1px;background:rgba(212,160,23,.28)}
+.h-tt{font-family:var(--fm);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.26)}
+
+/* ── HERO 3D PRODUCT CARDS ── */
+.h-showcase{position:absolute;right:4%;top:50%;transform:translateY(-50%);z-index:3;width:380px;height:520px}
+
+.bc-wrap{position:absolute;top:10px;right:10px;opacity:0;animation:bcIn .9s cubic-bezier(.34,1.56,.64,1) 3.3s forwards}
+@keyframes bcIn{from{opacity:0;transform:translateX(130px) translateY(-70px) rotateY(-45deg) rotateX(15deg)}to{opacity:1;transform:translateX(0) translateY(0) rotateY(0) rotateX(0)}}
+.bc{width:310px;height:175px;animation:bcFloat 7s ease-in-out infinite 4.2s,bcSway 9s ease-in-out infinite 4.2s}
+@keyframes bcFloat{0%,100%{transform:translateY(0) rotateX(3deg)}50%{transform:translateY(-16px) rotateX(-2deg)}}
+@keyframes bcSway{0%,100%{transform:rotateY(-6deg)}50%{transform:rotateY(6deg)}}
+.bc-front{width:310px;height:175px;background:linear-gradient(135deg,var(--navy2) 0%,#0d1f3a 100%);border:1px solid rgba(212,160,23,.25);border-radius:14px;padding:24px 28px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 40px 100px rgba(0,0,0,.6),0 0 0 1px rgba(212,160,23,.08) inset,0 1px 0 rgba(255,255,255,.06) inset;position:relative;overflow:hidden}
+.bc-front::before{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.04),transparent);animation:bcShine 4s ease-in-out infinite 5s}
+@keyframes bcShine{0%,100%{left:-100%}50%{left:150%}}
+.bc-logo-txt{font-family:var(--fd);font-size:22px;color:var(--gold);letter-spacing:-.3px}
+.bc-logo-sub{font-family:var(--fb);font-size:8px;letter-spacing:2.5px;color:rgba(255,255,255,.35);text-transform:uppercase;margin-top:2px}
+.bc-divider{width:40px;height:1px;background:rgba(212,160,23,.3)}
+.bc-name{font-size:13px;color:var(--white);font-weight:500}
+.bc-role{font-size:9px;color:rgba(255,255,255,.4);letter-spacing:.8px;margin-top:1px}
+.bc-contact{font-family:var(--fm);font-size:8.5px;color:rgba(212,160,23,.65);letter-spacing:.3px;margin-top:4px}
+.bc-tag{position:absolute;bottom:-34px;left:50%;transform:translateX(-50%);background:rgba(212,160,23,.12);border:1px solid rgba(212,160,23,.25);color:var(--gold);font-family:var(--fm);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:20px;white-space:nowrap;backdrop-filter:blur(10px);opacity:0;animation:fadeUp .5s 4.2s forwards}
+
+.fl-wrap{position:absolute;bottom:20px;left:0;opacity:0;animation:flIn 1s cubic-bezier(.34,1.56,.64,1) 3.6s forwards}
+@keyframes flIn{from{opacity:0;transform:translateX(-90px) translateY(90px) rotate(-20deg)}to{opacity:1;transform:translateX(0) translateY(0) rotate(-7deg)}}
+.fl{width:200px;height:285px;background:linear-gradient(160deg,#fff 0%,#f8f4ed 100%);border-radius:10px;border:1px solid rgba(10,22,40,.08);padding:18px;display:flex;flex-direction:column;gap:10px;box-shadow:0 30px 80px rgba(0,0,0,.4);transform:rotate(-7deg);animation:flFloat 8s ease-in-out infinite 4.6s}
+@keyframes flFloat{0%,100%{transform:rotate(-7deg) translateY(0)}50%{transform:rotate(-5deg) translateY(-12px)}}
+.fl-hd{background:var(--navy);border-radius:6px;padding:14px;text-align:center}
+.fl-hl{font-family:var(--fd);font-size:15px;color:var(--gold)}
+.fl-hs{font-family:var(--fm);font-size:7px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:2px}
+.fl-img{height:60px;background:linear-gradient(135deg,rgba(212,160,23,.1),rgba(212,160,23,.04));border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:9px;color:rgba(10,22,40,.3);font-family:var(--fm);letter-spacing:1px}
+.fl-lines{display:flex;flex-direction:column;gap:5px;flex:1}
+.fl-line{height:5px;background:rgba(10,22,40,.07);border-radius:2px}
+.fl-price{background:var(--gold);color:var(--navy);font-family:var(--fm);font-size:9px;font-weight:700;padding:7px;border-radius:6px;text-align:center;margin-top:auto}
+.fl-tag{position:absolute;top:-30px;right:0;background:rgba(212,160,23,.12);border:1px solid rgba(212,160,23,.25);color:var(--gold);font-family:var(--fm);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:20px;white-space:nowrap;backdrop-filter:blur(10px);opacity:0;animation:fadeUp .5s 4.4s forwards}
+
+.bn-wrap{position:absolute;top:50%;right:-5px;transform:translateY(-50%);opacity:0;animation:bnIn .9s cubic-bezier(.34,1.56,.64,1) 3.9s forwards}
+@keyframes bnIn{from{opacity:0;transform:translateY(-50%) translateX(70px)}to{opacity:1;transform:translateY(-50%) translateX(0)}}
+.bn{width:72px;height:220px;background:linear-gradient(180deg,var(--navy) 0%,var(--navy2) 100%);border-radius:6px;border:1px solid rgba(212,160,23,.18);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;box-shadow:0 24px 70px rgba(0,0,0,.45);animation:bnFloat 9s ease-in-out infinite 4.9s;padding:14px 8px;transform:rotate(3deg)}
+@keyframes bnFloat{0%,100%{transform:rotate(3deg) translateY(0)}50%{transform:rotate(1deg) translateY(-14px)}}
+.bn-l{font-family:var(--fd);font-size:11px;color:var(--gold);writing-mode:vertical-rl;transform:rotate(180deg);letter-spacing:2.5px}
+.bn-ln{width:1px;height:28px;background:rgba(212,160,23,.25)}
+.bn-t{font-family:var(--fm);font-size:7px;color:rgba(255,255,255,.2);writing-mode:vertical-rl;letter-spacing:2px;text-transform:uppercase}
+
+.sc-ind{position:absolute;bottom:36px;left:60px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp .6s 4.4s forwards}
+.sc-ind span{font-family:var(--fm);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25)}
+.sc-ln{width:1px;height:52px;background:rgba(212,160,23,.12);position:relative;overflow:hidden}
+.sc-ln::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:linear-gradient(transparent,var(--gold));animation:scDown 2.4s ease-in-out infinite}
+@keyframes scDown{0%{top:-100%}100%{top:100%}}
+
+/* STATS */
+#stats{background:var(--gold);padding:0 60px}
+.st-in{display:grid;grid-template-columns:repeat(4,1fr)}
+.st-it{padding:38px 44px;border-right:1px solid rgba(10,22,40,.1);position:relative;overflow:hidden;cursor:default;transition:all .3s}
+.st-it:first-child{border-left:1px solid rgba(10,22,40,.1)}
+.st-it::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,0);transition:background .4s}
+.st-it:hover::before{background:rgba(255,255,255,.2)}
+.st-it:hover .st-num{transform:scale(1.1) translateY(-4px);color:var(--navy)}
+.st-num{font-family:var(--fd);font-size:50px;color:var(--navy);font-weight:900;line-height:1;margin-bottom:4px;transition:all .4s cubic-bezier(.34,1.56,.64,1)}
+.st-lbl{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(10,22,40,.5)}
+
+/* SHARED */
+section{padding:120px 60px}
+.s-tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--fm);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.s-tag::before{content:'';width:30px;height:1px;background:var(--gold)}
+.s-h2{font-family:var(--fd);font-size:clamp(38px,4.5vw,66px);line-height:1.03;letter-spacing:-2px;color:var(--navy);margin-bottom:20px}
+.s-h2.lt{color:var(--white)}
+.s-sub{font-size:17px;line-height:1.8;color:var(--gray);max-width:540px}
+.s-sub.lt{color:rgba(255,255,255,.4)}
+
+/* REVEAL ANIMATIONS */
+.rv{opacity:0;transform:translateY(56px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.rv.on{opacity:1;transform:translateY(0)}
+.rv-l{opacity:0;transform:translateX(-56px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.rv-l.on{opacity:1;transform:translateX(0)}
+.rv-r{opacity:0;transform:translateX(56px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.rv-r.on{opacity:1;transform:translateX(0)}
+.rv-sc{opacity:0;transform:scale(.82);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.rv-sc.on{opacity:1;transform:scale(1)}
+.rv-rot{opacity:0;transform:rotate(-8deg) translateY(30px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.rv-rot.on{opacity:1;transform:rotate(0) translateY(0)}
+
+/* SERVICES */
+#services{background:var(--graylt)}
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:72px}
+.srv-c{background:var(--white);border:1px solid rgba(10,22,40,.05);border-radius:18px;padding:42px 36px;position:relative;overflow:hidden;transition:all .55s cubic-bezier(.34,1.56,.64,1);cursor:pointer;transform-style:preserve-3d}
+.srv-c::before{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(105deg,transparent,rgba(212,160,23,.05),rgba(255,255,255,.03),transparent);transition:left .75s ease}
+.srv-c::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transform-origin:left;transition:transform .5s ease}
+.srv-c:hover{transform:translateY(-14px);box-shadow:0 40px 90px rgba(0,0,0,.1);border-color:rgba(212,160,23,.12)}
+.srv-c:hover::before{left:160%}
+.srv-c:hover::after{transform:scaleX(1)}
+.srv-ico{width:58px;height:58px;background:rgba(212,160,23,.07);border-radius:15px;margin-bottom:30px;display:flex;align-items:center;justify-content:center;font-size:28px;transition:all .45s cubic-bezier(.34,1.56,.64,1)}
+.srv-c:hover .srv-ico{background:var(--gold);transform:rotate(-10deg) scale(1.15)}
+.srv-title{font-family:var(--fd);font-size:22px;margin-bottom:12px;color:var(--navy)}
+.srv-desc{font-size:14px;line-height:1.72;color:var(--gray);margin-bottom:24px}
+.srv-price{font-family:var(--fm);font-size:11px;color:var(--gold);letter-spacing:1px}
+.srv-arr{position:absolute;top:34px;right:34px;font-size:20px;color:rgba(10,22,40,.1);transition:all .45s cubic-bezier(.34,1.56,.64,1)}
+.srv-c:hover .srv-arr{color:var(--gold);transform:translate(5px,-5px) scale(1.25)}
+
+/* SHOWCASE */
+#showcase{background:var(--navy);padding:0;overflow:hidden}
+.sh-hd{padding:120px 60px 0}
+.sh-wrap{position:relative;overflow:hidden;margin-top:64px;padding-bottom:120px}
+.sh-wrap::before,.sh-wrap::after{content:'';position:absolute;top:0;bottom:0;width:140px;z-index:2;pointer-events:none}
+.sh-wrap::before{left:0;background:linear-gradient(90deg,var(--navy),transparent)}
+.sh-wrap::after{right:0;background:linear-gradient(-90deg,var(--navy),transparent)}
+.sh-track{display:flex;gap:24px;padding:20px 60px;animation:shScroll 32s linear infinite;width:max-content}
+.sh-track:hover{animation-play-state:paused}
+@keyframes shScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.sh-c{flex-shrink:0;width:290px;border-radius:22px;overflow:hidden;position:relative;cursor:pointer;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);transition:border-color .3s}
+.sh-c:hover{border-color:rgba(212,160,23,.3)}
+.sh-c-img{height:210px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.sh-c-body{padding:24px}
+.sh-c-tag{font-family:var(--fm);font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:9px}
+.sh-c-name{font-family:var(--fd);font-size:21px;color:var(--white);margin-bottom:7px}
+.sh-c-desc{font-size:13px;color:rgba(255,255,255,.38);margin-bottom:16px;line-height:1.55}
+.sh-c-price{font-family:var(--fm);font-size:12px;color:var(--gold);letter-spacing:.5px}
+.sh-c-arr{position:absolute;top:20px;right:20px;width:38px;height:38px;border-radius:50%;background:rgba(212,160,23,.1);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:16px;transition:all .35s cubic-bezier(.34,1.56,.64,1)}
+.sh-c:hover .sh-c-arr{background:var(--gold);color:var(--navy);transform:translate(4px,-4px) scale(1.1)}
+
+/* Product img backgrounds */
+.sh-c.bc-t .sh-c-img{background:linear-gradient(135deg,var(--navy2),#0c1e3a)}
+.sh-c.fl-t .sh-c-img{background:linear-gradient(135deg,#f5f0e8,#fff)}
+.sh-c.bn-t .sh-c-img{background:linear-gradient(135deg,var(--navy3),#193060)}
+.sh-c.st-t .sh-c-img{background:linear-gradient(135deg,#121a12,#1a2e1a)}
+.sh-c.br-t .sh-c-img{background:linear-gradient(135deg,#16213e,#0f3460)}
+.sh-c.uv-t .sh-c-img{background:linear-gradient(135deg,#1a0a2e,#2d1855)}
+
+/* Mini product previews */
+.mbc{width:185px;height:105px;background:linear-gradient(135deg,var(--navy),var(--navy2));border:1px solid rgba(212,160,23,.28);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 24px 60px rgba(0,0,0,.55);animation:mFloat 5.5s ease-in-out infinite;position:relative;overflow:hidden}
+.mbc::before{content:'';position:absolute;inset:0;border-radius:10px;background:linear-gradient(105deg,transparent 25%,rgba(255,255,255,.05) 45%,transparent 65%);animation:mShine 3.5s ease-in-out infinite}
+@keyframes mShine{0%,100%{transform:translateX(-100%) skewX(-10deg)}60%{transform:translateX(200%) skewX(-10deg)}}
+@keyframes mFloat{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(2deg) translateY(-10px)}}
+.mbc-l{font-family:var(--fd);font-size:15px;color:var(--gold)}
+.mbc-s{font-family:var(--fb);font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.3);text-transform:uppercase}
+.mbc-n{font-size:11px;color:var(--white);font-weight:500}
+.mbc-r{font-family:var(--fm);font-size:8px;color:rgba(255,255,255,.35)}
+
+.mfl{width:135px;height:190px;background:#fff;border-radius:7px;padding:13px;display:flex;flex-direction:column;gap:7px;box-shadow:0 22px 55px rgba(0,0,0,.42);animation:mFlFloat 6.5s ease-in-out infinite;transform:rotate(4deg)}
+@keyframes mFlFloat{0%,100%{transform:rotate(4deg) translateY(0)}50%{transform:rotate(2deg) translateY(-12px)}}
+.mfl-hd{background:var(--navy);border-radius:5px;padding:11px;text-align:center}
+.mfl-l{font-family:var(--fd);font-size:13px;color:var(--gold)}
+.mfl-s{font-family:var(--fm);font-size:7px;letter-spacing:1.5px;color:rgba(255,255,255,.3);text-transform:uppercase;margin-top:1px}
+.mfl-img{height:52px;background:linear-gradient(135deg,rgba(212,160,23,.08),rgba(212,160,23,.03));border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:8px;color:rgba(10,22,40,.25);letter-spacing:1px}
+.mfl-ln{display:flex;flex-direction:column;gap:4px}
+.mfl-l2{height:5px;background:rgba(10,22,40,.07);border-radius:2px}
+.mfl-pr{background:var(--gold);color:var(--navy);font-family:var(--fm);font-size:9px;font-weight:700;padding:6px;border-radius:5px;text-align:center;margin-top:auto}
+
+.mbn{width:65px;height:190px;background:linear-gradient(180deg,var(--navy),var(--navy2));border-radius:6px;border:1px solid rgba(212,160,23,.16);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;box-shadow:0 18px 50px rgba(0,0,0,.45);animation:mBnFloat 8s ease-in-out infinite;transform:rotate(-3deg);padding:12px 6px}
+@keyframes mBnFloat{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(1deg) translateY(-14px)}}
+.mbn-l{font-family:var(--fd);font-size:11px;color:var(--gold);writing-mode:vertical-rl;transform:rotate(180deg);letter-spacing:2.5px}
+.mbn-ln{width:1px;height:26px;background:rgba(212,160,23,.22)}
+.mbn-t{font-family:var(--fm);font-size:7px;color:rgba(255,255,255,.2);writing-mode:vertical-rl;letter-spacing:2px;text-transform:uppercase}
+
+.mst{display:flex;flex-direction:column;gap:12px;align-items:center;animation:mStFloat 6s ease-in-out infinite}
+@keyframes mStFloat{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}}
+.stk{border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.stk.lg{width:95px;height:95px;background:var(--gold);font-size:13px;color:var(--navy)}
+.stk.sm{width:60px;height:60px;background:var(--gold2);font-size:10px;color:var(--navy)}
+
+.mbr{width:210px;height:148px;display:flex;border-radius:7px;overflow:hidden;box-shadow:0 22px 55px rgba(0,0,0,.42);animation:mBrFloat 7s ease-in-out infinite;transform:rotate(3deg)}
+@keyframes mBrFloat{0%,100%{transform:rotate(3deg) translateY(0)}50%{transform:rotate(1deg) translateY(-12px)}}
+.mbr-p{flex:1;padding:12px;display:flex;flex-direction:column;gap:5px}
+.mbr-p:first-child{background:var(--navy);border-right:1px solid rgba(212,160,23,.18)}
+.mbr-p:last-child{background:#fff}
+.mbr-l{font-family:var(--fd);font-size:11px;color:var(--gold)}
+.mbr-ln{display:flex;flex-direction:column;gap:4px;margin-top:5px}
+.mbr-l2{height:4px;border-radius:1px}
+.mbr-l2.lt{background:rgba(255,255,255,.1)}
+.mbr-l2.dk{background:rgba(10,22,40,.1)}
+
+.muv{width:185px;height:105px;border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 24px 60px rgba(0,0,0,.55),0 0 60px rgba(120,0,180,.15);background:linear-gradient(135deg,#180828,#2a1548);border:1px solid rgba(140,0,200,.25);animation:mUvFloat 6s ease-in-out infinite;position:relative;overflow:hidden}
+@keyframes mUvFloat{0%,100%{transform:rotate(3deg) translateY(0)}50%{transform:rotate(-1deg) translateY(-12px)}}
+.muv::before{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 20%,rgba(160,0,255,.12) 40%,rgba(255,255,255,.06) 50%,transparent 70%);animation:uvSh 3s ease-in-out infinite}
+@keyframes uvSh{0%,100%{transform:translateX(-100%) skewX(-10deg)}60%{transform:translateX(220%) skewX(-10deg)}}
+.muv-l{font-family:var(--fd);font-size:15px;color:#d4aaff;position:relative;z-index:1}
+.muv-n{font-size:11px;color:rgba(255,255,255,.75);position:relative;z-index:1}
+.muv-t{font-family:var(--fm);font-size:8px;letter-spacing:1px;color:rgba(160,0,255,.7);text-transform:uppercase;position:relative;z-index:1}
+
+/* DIGITAL SERVICES */
+.dig-grid{}
+.dig-c{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:34px 28px;position:relative;overflow:hidden;transition:all .5s cubic-bezier(.34,1.56,.64,1);cursor:default}
+.dig-c::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transform-origin:left;transition:transform .5s}
+.dig-c:hover{background:rgba(255,255,255,.05);border-color:rgba(212,160,23,.25);transform:translateY(-8px);box-shadow:0 30px 70px rgba(0,0,0,.2)}
+.dig-c:hover::before{transform:scaleX(1)}
+.dig-ico{font-size:36px;margin-bottom:20px;display:block;transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
+.dig-c:hover .dig-ico{transform:scale(1.18) rotate(-5deg)}
+.dig-title{font-family:var(--fd);font-size:20px;color:var(--white);margin-bottom:10px}
+.dig-desc{font-size:13px;line-height:1.7;color:rgba(255,255,255,.38);margin-bottom:18px}
+.dig-tags{display:flex;flex-wrap:wrap;gap:7px}
+.dig-tags span{font-family:var(--fm);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);background:rgba(212,160,23,.08);border:1px solid rgba(212,160,23,.18);padding:4px 10px;border-radius:20px;transition:all .3s}
+.dig-c:hover .dig-tags span{background:rgba(212,160,23,.15);border-color:rgba(212,160,23,.35)}
+.dig-cta{display:flex;align-items:center;justify-content:space-between;gap:32px;margin-top:60px;background:rgba(212,160,23,.06);border:1px solid rgba(212,160,23,.2);border-radius:18px;padding:36px 40px;flex-wrap:wrap}
+.dig-cta-title{font-family:var(--fd);font-size:26px;color:var(--white);margin-bottom:8px;letter-spacing:-.5px}
+.dig-cta-sub{font-size:14px;color:rgba(255,255,255,.4)}
+
+/* WHY */
+#why{background:var(--navy)}
+.why-wr{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;margin-top:72px}
+.why-img-bx{width:100%;aspect-ratio:4/3;border-radius:24px;overflow:hidden;position:relative}
+.why-img-bx::before{content:'';position:absolute;inset:-3px;border-radius:27px;background:conic-gradient(from 0deg,transparent 0%,var(--gold) 12%,transparent 24%);animation:rotBdr 5s linear infinite;opacity:.35}
+.why-img-bx::after{content:'';position:absolute;inset:1px;border-radius:22px;background:rgba(255,255,255,.03)}
+@keyframes rotBdr{to{transform:rotate(360deg)}}
+.why-img-real{position:absolute;inset:2px;border-radius:21px;background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&auto=format&fit=crop&q=80');background-size:cover;background-position:center;z-index:1}
+.why-img-ov{position:absolute;inset:2px;border-radius:21px;background:rgba(10,22,40,.4);z-index:2}
+.why-img-in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:3;gap:8px}
+.why-im-l{font-family:var(--fd);font-size:72px;color:var(--white);opacity:.15;line-height:1}
+.why-im-t{font-family:var(--fm);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.why-bdg{position:absolute;bottom:-26px;right:-26px;background:var(--gold);border-radius:18px;padding:24px 30px;text-align:center;z-index:4;animation:bdgBnc 3.5s ease-in-out infinite}
+@keyframes bdgBnc{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-12px) rotate(1deg)}}
+.why-bn{font-family:var(--fd);font-size:46px;font-weight:900;color:var(--navy);line-height:1}
+.why-bt{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(10,22,40,.62);margin-top:2px}
+.why-pts{display:flex;flex-direction:column;gap:20px}
+.why-pt{display:flex;gap:22px;align-items:flex-start;padding:26px;border-radius:16px;border:1px solid rgba(255,255,255,.05);background:rgba(255,255,255,.02);transition:all .45s cubic-bezier(.34,1.56,.64,1)}
+.why-pt:hover{background:rgba(212,160,23,.06);border-color:rgba(212,160,23,.22);transform:translateX(14px)}
+.why-pt-ic{width:48px;height:48px;flex-shrink:0;background:rgba(212,160,23,.1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;transition:all .45s cubic-bezier(.34,1.56,.64,1)}
+.why-pt:hover .why-pt-ic{background:var(--gold);transform:rotate(-10deg) scale(1.1)}
+.why-pt-t{font-size:16px;font-weight:500;color:var(--white);margin-bottom:6px}
+.why-pt-d{font-size:13px;line-height:1.7;color:rgba(255,255,255,.36)}
+
+/* PORTFOLIO */
+#portfolio{background:var(--navy);border-top:1px solid rgba(255,255,255,.04)}
+.port-hd{padding:120px 60px 0}
+.port-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:290px 290px;gap:14px;padding:50px 60px 120px}
+.pc{border-radius:18px;overflow:hidden;position:relative;cursor:pointer;transition:transform .55s cubic-bezier(.34,1.56,.64,1);background-size:cover;background-position:center}
+.pc.p1{grid-column:span 7;background-image:url('https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=900&auto=format&fit=crop&q=85')}
+.pc.p2{grid-column:span 5;background-image:url('https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=700&auto=format&fit=crop&q=85')}
+.pc.p3{grid-column:span 4;background-image:url('https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&auto=format&fit=crop&q=85')}
+.pc.p4{grid-column:span 4;background-image:url('https://images.unsplash.com/photo-1612817288484-6f916006741a?w=600&auto=format&fit=crop&q=85')}
+.pc.p5{grid-column:span 4;background-image:url('https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?w=600&auto=format&fit=crop&q=85')}
+.pc:hover{transform:scale(.965)}
+.pc-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,.9) 0%,rgba(10,22,40,.3) 60%,transparent 100%);opacity:0;transition:opacity .45s;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;backdrop-filter:blur(2px)}
+.pc:hover .pc-ov{opacity:1}
+.pc-t{font-family:var(--fd);font-size:24px;color:var(--gold);transform:translateY(24px);transition:transform .4s .06s}
+.pc-s{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.55);transform:translateY(24px);transition:transform .4s .12s;margin-top:4px}
+.pc:hover .pc-t,.pc:hover .pc-s{transform:translateY(0)}
+.pc-lbl{position:absolute;top:16px;left:16px;font-family:var(--fm);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);background:rgba(10,22,40,.55);padding:4px 12px;border-radius:20px;backdrop-filter:blur(8px)}
+
+/* TESTIMONIALS */
+#testimonials{background:var(--graylt)}
+.ts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:72px}
+.ts-c{background:var(--white);border:1px solid rgba(10,22,40,.05);border-radius:18px;padding:38px 32px;position:relative;overflow:hidden;transition:all .5s cubic-bezier(.34,1.56,.64,1)}
+.ts-c::before{content:'"';font-family:var(--fd);font-size:160px;color:var(--gold);opacity:.04;position:absolute;top:-40px;left:6px;line-height:1;pointer-events:none;transition:all .4s}
+.ts-c:hover{transform:translateY(-10px);box-shadow:0 32px 70px rgba(0,0,0,.09);border-color:rgba(212,160,23,.12)}
+.ts-c:hover::before{opacity:.09;transform:scale(1.12) rotate(-6deg)}
+.ts-stars{display:flex;gap:3px;margin-bottom:20px}
+.ts-stars span{color:var(--gold);font-size:15px}
+.ts-txt{font-size:15px;line-height:1.8;color:var(--navy);margin-bottom:30px;font-style:italic}
+.ts-auth{display:flex;align-items:center;gap:14px}
+.ts-av{width:46px;height:46px;border-radius:50%;background:var(--navy2);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--gold);font-family:var(--fd);border:2px solid rgba(212,160,23,.2)}
+.ts-nm{font-size:14px;font-weight:500;color:var(--navy)}
+.ts-rl{font-size:11px;color:var(--gray)}
+
+/* PRICING */
+#pricing{background:var(--white)}
+.pr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:72px}
+.pr-c{border:1px solid rgba(10,22,40,.07);border-radius:20px;padding:44px 36px;position:relative;overflow:hidden;transition:all .55s cubic-bezier(.34,1.56,.64,1)}
+.pr-c::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold2),transparent);transform:scaleX(0);transition:transform .55s}
+.pr-c:hover::before{transform:scaleX(1)}
+.pr-c:hover{transform:translateY(-12px);border-color:rgba(212,160,23,.28);box-shadow:0 44px 90px rgba(0,0,0,.1)}
+.pr-c.ft{background:var(--navy);border-color:var(--gold);transform:scale(1.04)}
+.pr-c.ft:hover{transform:scale(1.04) translateY(-12px)}
+.pr-bdg{position:absolute;top:22px;right:22px;background:var(--gold);color:var(--navy);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:20px}
+.pr-prod{font-family:var(--fm);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.pr-nm{font-family:var(--fd);font-size:29px;margin-bottom:7px}
+.pr-nm.lt{color:var(--white)}
+.pr-qty{font-size:12px;color:var(--gray);margin-bottom:32px}
+.pr-amt{font-family:var(--fd);font-size:56px;font-weight:900;color:var(--navy);line-height:1;transition:transform .35s}
+.pr-amt.lt{color:var(--white)}
+.pr-c:hover .pr-amt{transform:scale(1.06)}
+.pr-amt span{font-size:22px;font-weight:400;vertical-align:super}
+.pr-div{height:1px;background:rgba(10,22,40,.08);margin:30px 0}
+.pr-div.lt{background:rgba(255,255,255,.1)}
+.pr-feats{list-style:none;display:flex;flex-direction:column;gap:13px;margin-bottom:38px}
+.pr-feats li{font-size:13px;color:var(--navy);display:flex;align-items:center;gap:10px}
+.pr-feats li.lt{color:rgba(255,255,255,.68)}
+.pr-feats li::before{content:'✓';color:var(--gold);font-weight:700;font-size:14px}
+.pr-btn{display:block;text-align:center;padding:15px;border-radius:11px;font-size:14px;font-weight:500;text-decoration:none;transition:all .38s;border:1px solid rgba(10,22,40,.1);color:var(--navy);position:relative;overflow:hidden}
+.pr-btn::before{content:'';position:absolute;inset:0;background:var(--navy);transform:scaleY(0);transform-origin:bottom;transition:transform .38s;z-index:0}
+.pr-btn span{position:relative;z-index:1;transition:color .38s}
+.pr-btn:hover::before{transform:scaleY(1)}
+.pr-btn:hover span{color:var(--white)}
+.pr-btn.gd{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+.pr-btn.gd::before{background:var(--navy2)}
+.pr-btn.gd:hover span{color:var(--white)}
+
+/* CTA */
+#cta{background:var(--gold);padding:100px 60px;text-align:center;position:relative;overflow:hidden}
+.cta-mq{position:absolute;top:50%;transform:translateY(-50%);white-space:nowrap;font-family:var(--fd);font-size:220px;font-weight:900;color:rgba(10,22,40,.04);animation:mqSc 16s linear infinite;pointer-events:none;letter-spacing:-5px}
+@keyframes mqSc{from{transform:translateY(-50%) translateX(0)}to{transform:translateY(-50%) translateX(-50%)}}
+.cta-in{position:relative;z-index:1}
+.cta-h2{font-family:var(--fd);font-size:clamp(44px,5.5vw,86px);color:var(--navy);letter-spacing:-2.5px;margin-bottom:20px;line-height:.98}
+.cta-sub{font-size:19px;color:rgba(10,22,40,.58);margin-bottom:48px}
+.cta-bts{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.bdk{display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:var(--white);padding:18px 40px;border-radius:9px;font-size:15px;font-weight:500;text-decoration:none;transition:all .38s;position:relative;overflow:hidden}
+.bdk::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.07);transform:translateX(-100%);transition:transform .45s}
+.bdk:hover::before{transform:translateX(0)}
+.bdk:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.bwg{display:inline-flex;align-items:center;gap:10px;background:var(--wa);color:#fff;padding:18px 40px;border-radius:9px;font-size:15px;font-weight:500;text-decoration:none;transition:all .35s}
+.bwg:hover{background:#20bd5a;transform:translateY(-4px);box-shadow:0 20px 50px rgba(37,211,102,.5)}
+.cta-cts{display:flex;gap:32px;justify-content:center;flex-wrap:wrap}
+.cta-ci{font-size:13px;color:rgba(10,22,40,.52);display:flex;align-items:center;gap:8px}
+
+/* FOOTER */
+footer{background:var(--navy);padding:100px 60px 40px;border-top:1px solid rgba(255,255,255,.05)}
+.ft-gr{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:64px;margin-bottom:72px}
+.ft-logo{font-family:var(--fd);font-size:38px;color:var(--gold);margin-bottom:10px}
+.ft-stag{font-family:var(--fm);font-size:9px;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:18px}
+.ft-desc{font-size:14px;color:rgba(255,255,255,.3);line-height:1.75;max-width:290px;margin-bottom:30px}
+.ft-socs{display:flex;gap:10px}
+.ft-soc{width:40px;height:40px;border:1px solid rgba(255,255,255,.07);border-radius:9px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);font-size:12px;text-decoration:none;transition:all .35s;font-family:var(--fm)}
+.ft-soc:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-4px)}
+.ft-ct{font-family:var(--fm);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
+.ft-lks{list-style:none;display:flex;flex-direction:column;gap:13px}
+.ft-lks a{font-size:14px;color:rgba(255,255,255,.32);text-decoration:none;transition:all .3s;display:flex;align-items:center;gap:6px}
+.ft-lks a::before{content:'→';font-size:11px;opacity:0;transform:translateX(-10px);transition:all .3s}
+.ft-lks a:hover{color:var(--white);padding-left:4px}
+.ft-lks a:hover::before{opacity:1;transform:translateX(0)}
+.ft-ci{display:flex;align-items:flex-start;gap:11px;margin-bottom:17px}
+.ft-ci-ic{color:var(--gold);flex-shrink:0;margin-top:1px}
+.ft-ci-tx{font-size:13px;color:rgba(255,255,255,.32);line-height:1.55}
+.ft-ci-tx a{color:rgba(255,255,255,.32);text-decoration:none;transition:color .3s}
+.ft-ci-tx a:hover{color:var(--gold)}
+.ft-bot{border-top:1px solid rgba(255,255,255,.05);padding-top:34px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.ft-cp{font-size:12px;color:rgba(255,255,255,.16)}
+.ft-pt{font-size:11px;color:rgba(255,255,255,.16);display:flex;align-items:center;gap:6px}
+.ft-pt span{color:var(--gold)}
+
+/* FLOAT WA */
+.f-wa{position:fixed;bottom:32px;right:32px;width:62px;height:62px;border-radius:50%;background:var(--wa);color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;text-decoration:none;z-index:900;opacity:0;animation:waIn .7s 4.8s cubic-bezier(.34,1.56,.64,1) forwards}
+@keyframes waIn{from{opacity:0;transform:scale(0) rotate(-180deg)}to{opacity:1;transform:scale(1) rotate(0)}}
+.f-wa:hover{transform:scale(1.16) rotate(12deg);box-shadow:0 14px 44px rgba(37,211,102,.6)}
+.f-wa::before,.f-wa::after{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid var(--wa);animation:waRpl 2.8s ease-out infinite}
+.f-wa::after{animation-delay:1.4s}
+@keyframes waRpl{0%{transform:scale(1);opacity:.6}100%{transform:scale(2.6);opacity:0}}
+.f-wa-tp{position:absolute;right:76px;top:50%;transform:translateY(-50%);background:var(--navy);color:var(--white);font-size:12px;padding:8px 16px;border-radius:9px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .3s;border:1px solid rgba(212,160,23,.18)}
+.f-wa:hover .f-wa-tp{opacity:1}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .dig-grid{grid-template-columns:repeat(2,1fr) !important}
+  .dig-cta{flex-direction:column;text-align:center}
+  nav{padding:0 32px}
+  .n-links,.n-cta{display:none}
+  .hbg{display:flex}
+  #hero{padding:100px 32px 80px}
+  .h-showcase{display:none}
+  .sc-ind{display:none}
+  section{padding:90px 32px}
+  .sh-hd{padding:90px 32px 0}
+  .port-hd{padding:90px 32px 0}
+  .port-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;padding:44px 32px 90px}
+  .pc:nth-child(1){grid-column:span 2;height:270px}
+  .pc:nth-child(n){grid-column:span 1;height:210px}
+  .srv-grid{grid-template-columns:repeat(2,1fr)}
+  .why-wr{grid-template-columns:1fr;gap:52px}
+  .ts-grid{grid-template-columns:1fr}
+  .pr-grid{grid-template-columns:1fr}
+  .pr-c.ft{transform:scale(1)}
+  footer{padding:80px 32px 36px}
+  .ft-gr{grid-template-columns:1fr 1fr;gap:44px}
+  #stats{padding:0 32px}
+  .st-in{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:640px){
+  .dig-grid{grid-template-columns:1fr !important}
+  #hero{padding:90px 20px 60px}
+  .h-btns{flex-direction:column}
+  section{padding:70px 20px}
+  .sh-hd{padding:70px 20px 0}
+  .port-hd{padding:70px 20px 0}
+  .port-grid{padding:36px 20px 70px;gap:10px}
+  .srv-grid{grid-template-columns:1fr}
+  .ft-gr{grid-template-columns:1fr;gap:40px}
+  .st-in{grid-template-columns:repeat(2,1fr)}
+  nav{padding:0 20px}
+  #stats{padding:0 20px}
+  .cta-bts{flex-direction:column;align-items:center}
+}
+</style>
 </head>
 <body>
+<div id="pb"></div>
+<div id="cur"></div>
+<div id="cur-r"></div>
 
-<!-- LOADER -->
-<div class="loader" id="loader">
-  <div class="loader-inner">
-    <div class="loader-logo">🖨️ Print<span>sy</span></div>
-    <div class="loader-bar"><div class="loader-fill"></div></div>
-  </div>
+<div id="loader">
+  <div class="ld-logo">Printsy</div>
+  <div class="ld-sub">Printing &amp; Advertising · Dubai</div>
+  <div class="ld-bar"><div class="ld-fill"></div></div>
+  <div class="ld-pct" id="ldpct">0%</div>
 </div>
 
-<!-- NAV -->
-<nav id="navbar">
-  <a href="#" class="nav-logo">🖨️ Print<span>sy</span><sup>®</sup></a>
-  <div class="nav-links">
-    <a href="#print">Print</a>
-    <a href="#digital">Digital</a>
-    <a href="#software">Software</a>
-    <a href="#why">Why Us</a>
-    <a href="#contact" class="nav-cta">📞 Get Quote</a>
-  </div>
-  <div class="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </div>
+<nav id="nav">
+  <a href="#" class="n-logo">Printsy<span>Printing &amp; Advertising</span></a>
+  <ul class="n-links">
+    <li><a href="#services">Printing</a></li>
+    <li><a href="#digital">Digital</a></li>
+    <li><a href="#showcase">Products</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#cta">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/971581464106" class="n-cta" target="_blank"><span>Get a Quote</span></a>
+  <div class="hbg" id="hbg"><span></span><span></span><span></span></div>
 </nav>
+<div class="mob" id="mob">
+  <a href="#services" onclick="cM()">Printing Services</a>
+  <a href="#digital" onclick="cM()">Digital Services</a>
+  <a href="#showcase" onclick="cM()">Products</a>
+  <a href="#why" onclick="cM()">Why Us</a>
+  <a href="#portfolio" onclick="cM()">Portfolio</a>
+  <a href="#pricing" onclick="cM()">Pricing</a>
+  <a href="#cta" onclick="cM()">Contact</a>
+</div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg-circles">
-    <span></span><span></span><span></span>
+<section id="hero">
+  <div class="h-grid"></div>
+  <div class="pts" id="pts"></div>
+  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+  <div class="hc">
+    <div class="h-badge"><span class="h-bdot"></span>Dubai's Trusted Print Partner</div>
+    <h1 class="h-title" id="htitle"></h1>
+    <p class="h-sub">Business cards, flyers, banners &amp; more — print-ready in Dubai. Quality you can feel, prices you'll love.</p>
+    <div class="h-btns">
+      <a href="https://wa.me/971581464106" class="bwa" target="_blank">💬 Order on WhatsApp</a>
+      <a href="#showcase" class="bgh">View Products →</a>
+    </div>
+    <div class="h-trust"><div class="h-tl"></div><span class="h-tt">Printing · Digital Marketing · Web Development</span></div>
   </div>
-  <div class="hero-content">
-    <div class="hero-badge">📍 DUBAI, UAE &nbsp;•&nbsp; EST. 2024</div>
-    <h1>Your Complete<br/><span class="gold">Print & Digital</span><br/><span class="outline">Agency</span></h1>
-    <p class="hero-sub">From Business Cards to Full Websites — We Print It, Design It, Build It & Market It. One Agency. Infinite Possibilities.</p>
-    <div class="hero-btns">
-      <a href="#contact" class="btn-gold">📞 Get Free Quote</a>
-      <a href="#print" class="btn-ghost">🔍 Explore Services</a>
+  <div class="h-showcase">
+    <div class="bc-wrap">
+      <div class="bc">
+        <div class="bc-front">
+          <div><div class="bc-logo-txt">Printsy</div><div class="bc-logo-sub">Printing &amp; Advertising</div></div>
+          <div class="bc-divider"></div>
+          <div><div class="bc-name">Your Name Here</div><div class="bc-role">Job Title · Dubai, UAE</div><div class="bc-contact">+971 581 464 106 · printsydubai@gmail.com</div></div>
+        </div>
+      </div>
+      <div class="bc-tag">Business Card</div>
+    </div>
+    <div class="fl-wrap">
+      <div class="fl-tag">A4 Flyer</div>
+      <div class="fl">
+        <div class="fl-hd"><div class="fl-hl">Printsy</div><div class="fl-hs">Dubai Printing</div></div>
+        <div class="fl-img">YOUR IMAGE HERE</div>
+        <div class="fl-lines"><div class="fl-line" style="width:90%"></div><div class="fl-line" style="width:70%"></div><div class="fl-line" style="width:85%"></div><div class="fl-line" style="width:60%"></div></div>
+        <div class="fl-price">FROM AED 130 · ORDER NOW</div>
+      </div>
+    </div>
+    <div class="bn-wrap">
+      <div class="bn"><div class="bn-l">Printsy</div><div class="bn-ln"></div><div class="bn-t">Dubai</div></div>
     </div>
   </div>
-  <div class="hero-scroll">SCROLL</div>
+  <div class="sc-ind"><span>Scroll</span><div class="sc-ln"></div></div>
 </section>
 
-<!-- STATS -->
-<div class="stats">
-  <div class="stat-item"><h3>500+</h3><p>HAPPY CLIENTS</p></div>
-  <div class="stat-item"><h3>5★</h3><p>QUALITY RATING</p></div>
-  <div class="stat-item"><h3>24HR</h3><p>FAST DELIVERY</p></div>
-  <div class="stat-item"><h3>100%</h3><p>PRINT READY</p></div>
-  <div class="stat-item"><h3>50+</h3><p>SERVICES</p></div>
+<div id="stats">
+  <div class="st-in">
+    <div class="st-it rv"><div class="st-num" data-count="500">0</div><div class="st-lbl">Happy Clients</div></div>
+    <div class="st-it rv" style="transition-delay:.1s"><div class="st-num" data-count="10000">0</div><div class="st-lbl">Orders Delivered</div></div>
+    <div class="st-it rv" style="transition-delay:.2s"><div class="st-num">48hr</div><div class="st-lbl">Turnaround Time</div></div>
+    <div class="st-it rv" style="transition-delay:.3s"><div class="st-num">5 ★</div><div class="st-lbl">Google Rating</div></div>
+  </div>
 </div>
 
-<!-- PRINT SERVICES -->
-<section class="print-services" id="print">
-  <div class="section-header reveal">
-    <div class="section-tag">🖨️ Printing & Advertising</div>
-    <h2 class="section-title">Premium <span class="gold">Print</span> Services</h2>
-    <p class="section-desc">Professional quality printing for every business need — CMYK, 300DPI, bleed marks, print-ready files.</p>
-  </div>
-  <div class="services-grid">
-    <div class="service-card reveal"><span class="sc-num">01</span><span class="sc-icon">🪪</span><h3 class="sc-title">Business Cards</h3><p class="sc-desc">Premium quality cards — CMYK, 300DPI, print-ready. Matte, glossy, spot UV, embossed.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Business%20Cards.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
-    <div class="service-card reveal"><span class="sc-num">02</span><span class="sc-icon">🖼️</span><h3 class="sc-title">Banners & Signage</h3><p class="sc-desc">Large format flex banners, standees, roll-ups, indoor & outdoor signage.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Banners%20%26%20Signage.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
-    <div class="service-card reveal"><span class="sc-num">03</span><span class="sc-icon">📄</span><h3 class="sc-title">Flyers & Brochures</h3><p class="sc-desc">Single page flyers, bi-fold, tri-fold brochures for marketing campaigns.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Flyers%20%26%20Brochures.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
-    <div class="service-card reveal"><span class="sc-num">04</span><span class="sc-icon">🏷️</span><h3 class="sc-title">Stickers & Labels</h3><p class="sc-desc">Custom stickers, product labels, packaging — any shape, any size, any material.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Stickers%20%26%20Labels.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
-    <div class="service-card reveal"><span class="sc-num">05</span><span class="sc-icon">📋</span><h3 class="sc-title">Bill Books</h3><p class="sc-desc">Custom invoice books, receipt pads, NCR bill books — 2ply & 3ply available.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Bill%20Books.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
-    <div class="service-card reveal"><span class="sc-num">06</span><span class="sc-icon">🪟</span><h3 class="sc-title">Window Graphics</h3><p class="sc-desc">Vinyl window stickers, frosted glass film, shopfront graphics & signage.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Window%20Graphics.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
-    <div class="service-card reveal"><span class="sc-num">07</span><span class="sc-icon">🚗</span><h3 class="sc-title">Vehicle Branding</h3><p class="sc-desc">Car wraps, van branding, vehicle graphics — full wrap or partial.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Vehicle%20Branding.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
-    <div class="service-card reveal"><span class="sc-num">08</span><span class="sc-icon">👕</span><h3 class="sc-title">T-Shirt Printing</h3><p class="sc-desc">Screen printing, DTG, heat transfer — bulk orders for events & corporates.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20T-Shirt%20Printing.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
-    <div class="service-card reveal"><span class="sc-num">09</span><span class="sc-icon">☕</span><h3 class="sc-title">Mugs & Merchandise</h3><p class="sc-desc">Branded mugs, pens, notebooks, keychains — perfect for corporate gifts.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Mugs%20%26%20Merchandise.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
-    <div class="service-card reveal"><span class="sc-num">10</span><span class="sc-icon">📅</span><h3 class="sc-title">Calendars & Diaries</h3><p class="sc-desc">Custom branded calendars, desk diaries, planners for corporate gifting.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Calendars%20%26%20Diaries.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
-    <div class="service-card reveal"><span class="sc-num">11</span><span class="sc-icon">📦</span><h3 class="sc-title">Packaging & Boxes</h3><p class="sc-desc">Custom product boxes, carry bags, packaging — branded for your business.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Packaging%20%26%20Boxes.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
-    <div class="service-card reveal"><span class="sc-num">12</span><span class="sc-icon">🎪</span><h3 class="sc-title">Exhibition Stands</h3><p class="sc-desc">Trade show displays, pop-up stands, exhibition graphics & branding.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Exhibition%20Stands.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
-    <div class="service-card reveal"><span class="sc-num">13</span><span class="sc-icon">📝</span><h3 class="sc-title">Letterheads & Envelopes</h3><p class="sc-desc">Corporate stationery — branded letterheads, envelopes, folders, pads.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Letterheads%20%26%20Envelopes.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
-    <div class="service-card reveal"><span class="sc-num">14</span><span class="sc-icon">💌</span><h3 class="sc-title">Wedding & Event Cards</h3><p class="sc-desc">Luxury wedding invitations, event cards, custom designs with premium finishing.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Wedding%20%26%20Event%20Cards.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
-    <div class="service-card reveal"><span class="sc-num">15</span><span class="sc-icon">🎨</span><h3 class="sc-title">Graphic Design</h3><p class="sc-desc">Professional design for all print materials — layout, typography, branding.</p><a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20to%20order%20Graphic%20Design.%20Please%20share%20details%20and%20pricing." class="order-btn" target="_blank">💬 Order Now</a></div>
+<section id="services">
+  <div class="s-tag rv">What We Print</div>
+  <h2 class="s-h2 rv" style="transition-delay:.1s">Everything You Need<br>to Make an Impression</h2>
+  <p class="s-sub rv" style="transition-delay:.2s">Premium quality and fast delivery across Dubai. Every print job handled with care.</p>
+  <div class="srv-grid">
+    <div class="srv-c rv" style="transition-delay:.05s"><span class="srv-arr">↗</span><div class="srv-ico">🪪</div><h3 class="srv-title">Business Cards</h3><p class="srv-desc">Glossy, matte, Spot UV finishes. Make a lasting first impression with cards that speak quality.</p><div class="srv-price">FROM AED 110 / 500 PCS</div></div>
+    <div class="srv-c rv" style="transition-delay:.1s"><span class="srv-arr">↗</span><div class="srv-ico">📄</div><h3 class="srv-title">Flyers &amp; Leaflets</h3><p class="srv-desc">A4, A5, A6 sizes. Full-color, double-sided, high-impact marketing material for any campaign.</p><div class="srv-price">FROM AED 130 / 1000 PCS</div></div>
+    <div class="srv-c rv" style="transition-delay:.15s"><span class="srv-arr">↗</span><div class="srv-ico">🪧</div><h3 class="srv-title">Banners &amp; Standees</h3><p class="srv-desc">Roll-up banners, X-banners, and large format prints for events, exhibitions, and retail.</p><div class="srv-price">CUSTOM PRICING</div></div>
+    <div class="srv-c rv" style="transition-delay:.2s"><span class="srv-arr">↗</span><div class="srv-ico">⭐</div><h3 class="srv-title">Spot UV Cards</h3><p class="srv-desc">Premium Spot UV coating for a luxurious finish. Perfect for high-end brands and executives.</p><div class="srv-price">FROM AED 199 / 1000 PCS</div></div>
+    <div class="srv-c rv" style="transition-delay:.25s"><span class="srv-arr">↗</span><div class="srv-ico">📋</div><h3 class="srv-title">Brochures</h3><p class="srv-desc">Bi-fold and tri-fold brochures for catalogues, menus, and brand presentations.</p><div class="srv-price">CUSTOM PRICING</div></div>
+    <div class="srv-c rv" style="transition-delay:.3s"><span class="srv-arr">↗</span><div class="srv-ico">🎨</div><h3 class="srv-title">Custom Design</h3><p class="srv-desc">Logo design, social media creatives, Meta Ads visuals, and complete brand identity packages.</p><div class="srv-price">FROM AED 99</div></div>
   </div>
 </section>
 
 <!-- DIGITAL SERVICES -->
-<section class="digital-services" id="digital">
-  <div class="section-header reveal">
-    <div class="section-tag" style="color:#60a5fa;background:rgba(96,165,250,0.1);border-color:rgba(96,165,250,0.2)">💻 Digital & Marketing</div>
-    <h2 class="section-title" style="color:white">Digital <span class="gold">Solutions</span></h2>
-    <p class="section-desc">Full-stack digital agency services — from logo design to complete digital marketing campaigns.</p>
+<section id="digital" style="background:var(--navy)">
+  <div class="s-tag rv">Digital Agency</div>
+  <h2 class="s-h2 lt rv" style="transition-delay:.1s">Full-Service Digital<br>Agency Dubai</h2>
+  <p class="s-sub lt rv" style="transition-delay:.2s">From ads to websites — we handle your entire digital presence so you can focus on business.</p>
+  <div class="dig-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:72px">
+
+    <div class="dig-c rv" style="transition-delay:.04s">
+      <div class="dig-ico">📱</div>
+      <h3 class="dig-title">Meta Ads</h3>
+      <p class="dig-desc">Facebook & Instagram ad campaigns that drive real leads. Targeting, creatives, A/B testing — full management.</p>
+      <div class="dig-tags"><span>Facebook</span><span>Instagram</span><span>Reels Ads</span></div>
+    </div>
+
+    <div class="dig-c rv" style="transition-delay:.08s">
+      <div class="dig-ico">🔍</div>
+      <h3 class="dig-title">Google Ads</h3>
+      <p class="dig-desc">Search, Display & YouTube ads. Show up when Dubai customers search for your services — pay only for results.</p>
+      <div class="dig-tags"><span>Search Ads</span><span>Display</span><span>YouTube</span></div>
+    </div>
+
+    <div class="dig-c rv" style="transition-delay:.12s">
+      <div class="dig-ico">🌐</div>
+      <h3 class="dig-title">Website Development</h3>
+      <p class="dig-desc">Professional websites built on WordPress, Next.js or custom HTML. Fast, mobile-first, and SEO-optimised.</p>
+      <div class="dig-tags"><span>WordPress</span><span>Next.js</span><span>Landing Pages</span></div>
+    </div>
+
+    <div class="dig-c rv" style="transition-delay:.16s">
+      <div class="dig-ico">📈</div>
+      <h3 class="dig-title">SEO Services</h3>
+      <p class="dig-desc">Rank higher on Google Dubai. On-page, off-page, technical SEO — get organic traffic that converts to clients.</p>
+      <div class="dig-tags"><span>On-Page SEO</span><span>Local SEO</span><span>Technical</span></div>
+    </div>
+
+    <div class="dig-c rv" style="transition-delay:.2s">
+      <div class="dig-ico">📲</div>
+      <h3 class="dig-title">Social Media Marketing</h3>
+      <p class="dig-desc">Content strategy, post design, scheduling & growth for Instagram, Facebook, LinkedIn & TikTok.</p>
+      <div class="dig-tags"><span>Instagram</span><span>LinkedIn</span><span>TikTok</span></div>
+    </div>
+
+    <div class="dig-c rv" style="transition-delay:.24s">
+      <div class="dig-ico">📊</div>
+      <h3 class="dig-title">Social Media Management</h3>
+      <p class="dig-desc">Full account management — daily posts, stories, reels, community management and monthly analytics reports.</p>
+      <div class="dig-tags"><span>Daily Posts</span><span>Reels</span><span>Analytics</span></div>
+    </div>
+
+    <div class="dig-c rv" style="transition-delay:.28s">
+      <div class="dig-ico">💻</div>
+      <h3 class="dig-title">Web App Development</h3>
+      <p class="dig-desc">Custom web applications, dashboards, booking systems and e-commerce stores built for Dubai businesses.</p>
+      <div class="dig-tags"><span>E-Commerce</span><span>Dashboard</span><span>Booking</span></div>
+    </div>
+
+    <div class="dig-c rv" style="transition-delay:.32s">
+      <div class="dig-ico">🎨</div>
+      <h3 class="dig-title">Brand Identity</h3>
+      <p class="dig-desc">Complete branding packages — logo, brand guidelines, business cards, social templates and print collateral.</p>
+      <div class="dig-tags"><span>Logo Design</span><span>Branding</span><span>Guidelines</span></div>
+    </div>
+
   </div>
-  <div class="digital-grid">
-    <div class="digital-card reveal">
-      <span class="dc-icon">🌐</span>
-      <span class="dc-badge badge-hot">HOT</span>
-      <h3 class="dc-title">Website Development</h3>
-      <p class="dc-desc">Professional websites for businesses — fast, mobile-friendly, SEO optimized. HTML, WordPress, React.</p>
-      <div class="dc-features">
-        <span class="dc-feature">HTML/CSS</span><span class="dc-feature">WordPress</span><span class="dc-feature">React</span><span class="dc-feature">SEO</span>
-      </div>
-      <a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20Website%20Development%20service.%20Please%20share%20details%20and%20pricing." class="dc-order-btn" target="_blank">💬 Order Now</a>
+
+  <!-- Digital CTA strip -->
+  <div class="dig-cta rv" style="transition-delay:.4s">
+    <div class="dig-cta-left">
+      <div class="dig-cta-title">Ready to Grow Your Business Digitally?</div>
+      <div class="dig-cta-sub">Get a free strategy consultation — no commitment, just real advice.</div>
     </div>
-    <div class="digital-card reveal">
-      <span class="dc-icon">🎨</span>
-      <span class="dc-badge badge-pro">PRO</span>
-      <h3 class="dc-title">Logo & Brand Design</h3>
-      <p class="dc-desc">Complete brand identity — logo, colors, fonts, brand guidelines. Professional & memorable.</p>
-      <div class="dc-features">
-        <span class="dc-feature">Logo Design</span><span class="dc-feature">Brand Kit</span><span class="dc-feature">Guidelines</span>
-      </div>
-      <a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20Logo%20%26%20Brand%20Design%20service.%20Please%20share%20details%20and%20pricing." class="dc-order-btn" target="_blank">💬 Order Now</a>
-    </div>
-    <div class="digital-card reveal">
-      <span class="dc-icon">📱</span>
-      <span class="dc-badge badge-hot">HOT</span>
-      <h3 class="dc-title">Meta Ads</h3>
-      <p class="dc-desc">Facebook & Instagram advertising — targeted campaigns that bring real customers to your business.</p>
-      <div class="dc-features">
-        <span class="dc-feature">Facebook Ads</span><span class="dc-feature">Instagram Ads</span><span class="dc-feature">Pixel Setup</span><span class="dc-feature">Retargeting</span>
-      </div>
-      <a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20Meta%20Ads%20service.%20Please%20share%20details%20and%20pricing." class="dc-order-btn" target="_blank">💬 Order Now</a>
-    </div>
-    <div class="digital-card reveal">
-      <span class="dc-icon">📊</span>
-      <span class="dc-badge badge-new">NEW</span>
-      <h3 class="dc-title">Social Media Management</h3>
-      <p class="dc-desc">Complete social media handling — content creation, posting, engagement, growth strategy.</p>
-      <div class="dc-features">
-        <span class="dc-feature">Instagram</span><span class="dc-feature">Facebook</span><span class="dc-feature">Content</span><span class="dc-feature">Analytics</span>
-      </div>
-      <a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20Social%20Media%20Management%20service.%20Please%20share%20details%20and%20pricing." class="dc-order-btn" target="_blank">💬 Order Now</a>
-    </div>
-    <div class="digital-card reveal">
-      <span class="dc-icon">🔍</span>
-      <span class="dc-badge badge-pro">PRO</span>
-      <h3 class="dc-title">Google Ads & SEO</h3>
-      <p class="dc-desc">Rank on Google, run search ads — get found by customers actively searching for your services.</p>
-      <div class="dc-features">
-        <span class="dc-feature">Google Ads</span><span class="dc-feature">SEO</span><span class="dc-feature">Keywords</span>
-      </div>
-      <a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20Google%20Ads%20%26%20SEO%20service.%20Please%20share%20details%20and%20pricing." class="dc-order-btn" target="_blank">💬 Order Now</a>
-    </div>
-    <div class="digital-card reveal">
-      <span class="dc-icon">🎬</span>
-      <span class="dc-badge badge-new">NEW</span>
-      <h3 class="dc-title">Video & Content Creation</h3>
-      <p class="dc-desc">Promotional videos, reels, motion graphics, product photography for your brand.</p>
-      <div class="dc-features">
-        <span class="dc-feature">Reels</span><span class="dc-feature">Motion Graphics</span><span class="dc-feature">Photography</span>
-      </div>
-      <a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20want%20Video%20%26%20Content%20Creation%20service.%20Please%20share%20details%20and%20pricing." class="dc-order-btn" target="_blank">💬 Order Now</a>
+    <a href="https://wa.me/971581464106" class="bwa" target="_blank" style="flex-shrink:0">💬 Free Consultation</a>
+  </div>
+</section>
+
+<section id="showcase" style="padding:0;background:var(--navy)">
+  <div class="sh-hd">
+    <div class="s-tag rv">Product Showcase</div>
+    <h2 class="s-h2 lt rv" style="transition-delay:.1s">Every Product,<br>Print-Perfect.</h2>
+    <p class="s-sub lt rv" style="transition-delay:.2s">Hover to pause — explore our full range.</p>
+  </div>
+  <div class="sh-wrap">
+    <div class="sh-track" id="sht">
+      <div class="sh-c bc-t rv-sc"><div class="sh-c-img"><div class="mbc"><div class="mbc-l">Printsy</div><div class="mbc-s">Dubai</div><div class="mbc-n">Your Name Here</div></div></div><div class="sh-c-body"><div class="sh-c-tag">Best Seller</div><div class="sh-c-name">Business Cards</div><div class="sh-c-desc">Glossy · Matte · Spot UV. 48hr delivery.</div><div class="sh-c-price">FROM AED 110 / 500 PCS</div></div><div class="sh-c-arr">↗</div></div>
+      <div class="sh-c fl-t rv-sc" style="transition-delay:.06s"><div class="sh-c-img"><div class="mfl"><div class="mfl-hd"><div class="mfl-l">Printsy</div><div class="mfl-s">Dubai</div></div><div class="mfl-img">YOUR IMAGE</div><div class="mfl-ln"><div class="mfl-l2"></div><div class="mfl-l2" style="width:75%"></div><div class="mfl-l2" style="width:88%"></div></div><div class="mfl-pr">AED 130</div></div></div><div class="sh-c-body"><div class="sh-c-tag">Most Ordered</div><div class="sh-c-name">Flyers &amp; Leaflets</div><div class="sh-c-desc">A4, A5, A6. Full color, double-sided.</div><div class="sh-c-price">FROM AED 130 / 1000 PCS</div></div><div class="sh-c-arr">↗</div></div>
+      <div class="sh-c bn-t rv-sc" style="transition-delay:.12s"><div class="sh-c-img" style="gap:22px;flex-direction:row;justify-content:center"><div class="mbn"><div class="mbn-l">Printsy</div><div class="mbn-ln"></div><div class="mbn-t">Dubai</div></div><div class="mbn" style="height:185px"><div class="mbn-l">Event</div><div class="mbn-ln"></div><div class="mbn-t">Banner</div></div></div><div class="sh-c-body"><div class="sh-c-tag">Large Format</div><div class="sh-c-name">Banners &amp; Standees</div><div class="sh-c-desc">Roll-up, X-banner. Events &amp; exhibitions.</div><div class="sh-c-price">CUSTOM PRICING</div></div><div class="sh-c-arr">↗</div></div>
+      <div class="sh-c st-t rv-sc" style="transition-delay:.18s"><div class="sh-c-img"><div class="mst"><div class="stk lg">Printsy</div><div class="stk sm">Dubai</div></div></div><div class="sh-c-body"><div class="sh-c-tag">Custom Shape</div><div class="sh-c-name">Stickers &amp; Labels</div><div class="sh-c-desc">Die-cut, round, square. Waterproof.</div><div class="sh-c-price">CUSTOM PRICING</div></div><div class="sh-c-arr">↗</div></div>
+      <div class="sh-c br-t rv-sc" style="transition-delay:.24s"><div class="sh-c-img"><div class="mbr"><div class="mbr-p"><div class="mbr-l">Printsy</div><div class="mbr-ln"><div class="mbr-l2 lt"></div><div class="mbr-l2 lt" style="width:70%"></div><div class="mbr-l2 lt" style="width:85%"></div></div></div><div class="mbr-p" style="background:#fff"><div class="mbr-ln" style="margin-top:8px"><div class="mbr-l2 dk"></div><div class="mbr-l2 dk" style="width:80%"></div><div class="mbr-l2 dk" style="width:65%"></div><div class="mbr-l2 dk" style="width:90%"></div></div></div></div></div><div class="sh-c-body"><div class="sh-c-tag">Tri-fold</div><div class="sh-c-name">Brochures</div><div class="sh-c-desc">Bi-fold, tri-fold. Menus &amp; catalogues.</div><div class="sh-c-price">CUSTOM PRICING</div></div><div class="sh-c-arr">↗</div></div>
+      <div class="sh-c uv-t rv-sc" style="transition-delay:.3s"><div class="sh-c-img"><div class="muv"><div class="muv-l">Printsy</div><div class="muv-n">Premium Edition</div><div class="muv-t">Spot UV · Luxury</div></div></div><div class="sh-c-body"><div class="sh-c-tag">Premium</div><div class="sh-c-name">Spot UV Cards</div><div class="sh-c-desc">Selective UV gloss. Most premium finish.</div><div class="sh-c-price">FROM AED 199 / 1000 PCS</div></div><div class="sh-c-arr">↗</div></div>
+      <!-- Duplicates for seamless loop -->
+      <div class="sh-c bc-t"><div class="sh-c-img"><div class="mbc"><div class="mbc-l">Printsy</div><div class="mbc-s">Dubai</div><div class="mbc-n">Your Name Here</div></div></div><div class="sh-c-body"><div class="sh-c-tag">Best Seller</div><div class="sh-c-name">Business Cards</div><div class="sh-c-desc">Glossy · Matte · Spot UV. 48hr delivery.</div><div class="sh-c-price">FROM AED 110 / 500 PCS</div></div><div class="sh-c-arr">↗</div></div>
+      <div class="sh-c fl-t"><div class="sh-c-img"><div class="mfl"><div class="mfl-hd"><div class="mfl-l">Printsy</div><div class="mfl-s">Dubai</div></div><div class="mfl-img">YOUR IMAGE</div><div class="mfl-ln"><div class="mfl-l2"></div><div class="mfl-l2" style="width:75%"></div><div class="mfl-l2" style="width:88%"></div></div><div class="mfl-pr">AED 130</div></div></div><div class="sh-c-body"><div class="sh-c-tag">Most Ordered</div><div class="sh-c-name">Flyers &amp; Leaflets</div><div class="sh-c-desc">A4, A5, A6. Full color, double-sided.</div><div class="sh-c-price">FROM AED 130 / 1000 PCS</div></div><div class="sh-c-arr">↗</div></div>
+      <div class="sh-c bn-t"><div class="sh-c-img" style="gap:22px;flex-direction:row;justify-content:center"><div class="mbn"><div class="mbn-l">Printsy</div><div class="mbn-ln"></div><div class="mbn-t">Dubai</div></div><div class="mbn" style="height:185px"><div class="mbn-l">Event</div><div class="mbn-ln"></div><div class="mbn-t">Banner</div></div></div><div class="sh-c-body"><div class="sh-c-tag">Large Format</div><div class="sh-c-name">Banners &amp; Standees</div><div class="sh-c-desc">Roll-up, X-banner. Events &amp; exhibitions.</div><div class="sh-c-price">CUSTOM PRICING</div></div><div class="sh-c-arr">↗</div></div>
+      <div class="sh-c st-t"><div class="sh-c-img"><div class="mst"><div class="stk lg">Printsy</div><div class="stk sm">Dubai</div></div></div><div class="sh-c-body"><div class="sh-c-tag">Custom Shape</div><div class="sh-c-name">Stickers &amp; Labels</div><div class="sh-c-desc">Die-cut, round, square. Waterproof.</div><div class="sh-c-price">CUSTOM PRICING</div></div><div class="sh-c-arr">↗</div></div>
+      <div class="sh-c br-t"><div class="sh-c-img"><div class="mbr"><div class="mbr-p"><div class="mbr-l">Printsy</div><div class="mbr-ln"><div class="mbr-l2 lt"></div><div class="mbr-l2 lt" style="width:70%"></div><div class="mbr-l2 lt" style="width:85%"></div></div></div><div class="mbr-p" style="background:#fff"><div class="mbr-ln" style="margin-top:8px"><div class="mbr-l2 dk"></div><div class="mbr-l2 dk" style="width:80%"></div><div class="mbr-l2 dk" style="width:65%"></div><div class="mbr-l2 dk" style="width:90%"></div></div></div></div></div><div class="sh-c-body"><div class="sh-c-tag">Tri-fold</div><div class="sh-c-name">Brochures</div><div class="sh-c-desc">Bi-fold, tri-fold. Menus &amp; catalogues.</div><div class="sh-c-price">CUSTOM PRICING</div></div><div class="sh-c-arr">↗</div></div>
+      <div class="sh-c uv-t"><div class="sh-c-img"><div class="muv"><div class="muv-l">Printsy</div><div class="muv-n">Premium Edition</div><div class="muv-t">Spot UV · Luxury</div></div></div><div class="sh-c-body"><div class="sh-c-tag">Premium</div><div class="sh-c-name">Spot UV Cards</div><div class="sh-c-desc">Selective UV gloss. Most premium finish.</div><div class="sh-c-price">FROM AED 199 / 1000 PCS</div></div><div class="sh-c-arr">↗</div></div>
     </div>
   </div>
 </section>
 
-<!-- SOFTWARE -->
-<section class="software" id="software">
-  <div class="section-header reveal">
-    <div class="section-tag">⚙️ Software Solutions</div>
-    <h2 class="section-title">Custom <span class="gold">Software</span> Development</h2>
-    <p class="section-desc">Online & offline software solutions tailored for your business needs — from simple tools to complex systems.</p>
-  </div>
-  <div class="software-grid">
-    <div class="soft-card online reveal">
-      <div class="soft-icon">🌐</div>
-      <span class="soft-tag">Online Software</span>
-      <h3 class="soft-title">Web Applications</h3>
-      <p class="soft-desc">Cloud-based software accessible from any browser — no installation needed.</p>
-      <ul class="soft-list">
-        <li>CRM Systems</li>
-        <li>Inventory Management</li>
-        <li>Booking & Appointment Systems</li>
-        <li>Online Ordering Platforms</li>
-        <li>HR & Payroll Systems</li>
-      </ul>
-      <a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20need%20Online%20Web%20Application%20software.%20Please%20share%20details%20and%20pricing." class="soft-order-btn" target="_blank">💬 Order Now</a>
-    </div>
-    <div class="soft-card offline reveal">
-      <div class="soft-icon">💻</div>
-      <span class="soft-tag">Offline Software</span>
-      <h3 class="soft-title">Desktop Applications</h3>
-      <p class="soft-desc">Installed software that works without internet — fast & reliable for daily operations.</p>
-      <ul class="soft-list">
-        <li>POS (Point of Sale) Systems</li>
-        <li>Billing & Invoice Software</li>
-        <li>Accounting Systems</li>
-        <li>Printing Shop Management</li>
-        <li>Warehouse Management</li>
-      </ul>
-      <a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20need%20Offline%20Desktop%20Application%20software.%20Please%20share%20details%20and%20pricing." class="soft-order-btn" target="_blank">💬 Order Now</a>
-    </div>
-    <div class="soft-card mobile reveal">
-      <div class="soft-icon">📱</div>
-      <span class="soft-tag">Mobile Apps</span>
-      <h3 class="soft-title">Mobile Applications</h3>
-      <p class="soft-desc">Android & iOS apps for your business — reach customers on their phones.</p>
-      <ul class="soft-list">
-        <li>Business Apps</li>
-        <li>Delivery & Tracking Apps</li>
-        <li>Customer Loyalty Apps</li>
-        <li>Staff Management Apps</li>
-        <li>E-Commerce Apps</li>
-      </ul>
-      <a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20need%20a%20Mobile%20App%20developed.%20Please%20share%20details%20and%20pricing." class="soft-order-btn" target="_blank">💬 Order Now</a>
-    </div>
-    <div class="soft-card ecom reveal">
-      <div class="soft-icon">🛒</div>
-      <span class="soft-tag">E-Commerce</span>
-      <h3 class="soft-title">Online Stores</h3>
-      <p class="soft-desc">Complete e-commerce solutions — sell online, manage orders, accept payments.</p>
-      <ul class="soft-list">
-        <li>Shopify & WooCommerce</li>
-        <li>Custom Online Stores</li>
-        <li>Payment Gateway Integration</li>
-        <li>Order Management</li>
-        <li>Multi-vendor Marketplaces</li>
-      </ul>
-      <a href="https://wa.me/971581464106?text=Hi%20Printsy!%20I%20need%20an%20E-Commerce%20Online%20Store.%20Please%20share%20details%20and%20pricing." class="soft-order-btn" target="_blank">💬 Order Now</a>
-    </div>
-  </div>
-</section>
-
-<!-- WHY US -->
-<section class="why" id="why">
-  <div class="section-header reveal">
-    <div class="section-tag">⭐ Why Choose Us</div>
-    <h2 class="section-title">Why <span class="gold">Printsy?</span></h2>
-    <p class="section-desc">We are not just printers — we are your complete business growth partner.</p>
-  </div>
-  <div class="why-grid">
-    <div class="why-card reveal"><div class="why-icon">⚡</div><h4 class="why-title">Fast Turnaround</h4><p class="why-desc">Same day & next day delivery available across Dubai. We never miss deadlines.</p></div>
-    <div class="why-card reveal"><div class="why-icon">🎯</div><h4 class="why-title">Print Ready Files</h4><p class="why-desc">CMYK, 300DPI, bleed marks — 100% professional output every single time.</p></div>
-    <div class="why-card reveal"><div class="why-icon">💰</div><h4 class="why-title">Best Prices</h4><p class="why-desc">Competitive rates without compromising on quality. Best value in Dubai.</p></div>
-    <div class="why-card reveal"><div class="why-icon">🤝</div><h4 class="why-title">One Stop Shop</h4><p class="why-desc">Print + Digital + Software — everything under one roof. No need to go anywhere else.</p></div>
-    <div class="why-card reveal"><div class="why-icon">👨‍💻</div><h4 class="why-title">Expert Team</h4><p class="why-desc">Designers, developers, marketers — all in one team working for your success.</p></div>
-    <div class="why-card reveal"><div class="why-icon">📞</div><h4 class="why-title">24/7 Support</h4><p class="why-desc">Always available on WhatsApp. Your satisfaction is our top priority.</p></div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="process">
-  <div class="section-header reveal">
-    <div class="section-tag" style="color:var(--gold)">🔄 How It Works</div>
-    <h2 class="section-title" style="color:white">Simple <span class="gold">Process</span></h2>
-    <p class="section-desc">Getting started is easy — just 4 simple steps.</p>
-  </div>
-  <div class="process-steps">
-    <div class="process-step reveal">
-      <div class="step-num">1</div>
-      <h4 class="step-title">Contact Us</h4>
-      <p class="step-desc">Call, WhatsApp or email us with your requirements.</p>
-    </div>
-    <div class="process-step reveal">
-      <div class="step-num">2</div>
-      <h4 class="step-title">Get Quote</h4>
-      <p class="step-desc">We send you a free quote within minutes.</p>
-    </div>
-    <div class="process-step reveal">
-      <div class="step-num">3</div>
-      <h4 class="step-title">We Design</h4>
-      <p class="step-desc">Our team designs & sends you a preview for approval.</p>
-    </div>
-    <div class="process-step reveal">
-      <div class="step-num">4</div>
-      <h4 class="step-title">Deliver</h4>
-      <p class="step-desc">Fast delivery to your doorstep anywhere in Dubai.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="section-header reveal">
-    <div class="section-tag">📞 Get In Touch</div>
-    <h2 class="section-title">Contact <span class="gold">Us</span></h2>
-    <p class="section-desc">Ready to grow your business? Let's talk today!</p>
-  </div>
-  <div class="contact-wrapper reveal">
-    <div class="contact-info-side">
-      <h3>🖨️ Printsy<br/>Printing & Advertising</h3>
-      <p>Dubai, UAE — Your complete print & digital partner. Available 7 days a week for all your business needs.</p>
-      <div class="contact-cards">
-        <a href="tel:+971581464106" class="contact-card">
-          <div class="cc-icon">📞</div>
-          <div><div class="cc-label">CALL US</div><div class="cc-val">+971 581464106</div></div>
-        </a>
-        <a href="mailto:captainib631@gmail.com" class="contact-card">
-          <div class="cc-icon">✉️</div>
-          <div><div class="cc-label">EMAIL US</div><div class="cc-val">captainib631@gmail.com</div></div>
-        </a>
-        <a href="https://wa.me/971581464106" class="contact-card">
-          <div class="cc-icon">💬</div>
-          <div><div class="cc-label">WHATSAPP</div><div class="cc-val">Chat With Us Now</div></div>
-        </a>
+<section id="why">
+  <div class="s-tag rv">Why Printsy</div>
+  <h2 class="s-h2 lt rv" style="transition-delay:.1s">Why Dubai Businesses<br>Choose Us</h2>
+  <div class="why-wr">
+    <div class="why-img rv-l" style="position:relative">
+      <div class="why-img-bx">
+        <div class="why-img-real"></div>
+        <div class="why-img-ov"></div>
+        <div class="why-img-in"><div class="why-im-l">P</div><div class="why-im-t">Printsy Dubai</div></div>
       </div>
+      <div class="why-bdg"><div class="why-bn">48hr</div><div class="why-bt">Fast Delivery</div></div>
     </div>
-    <div class="contact-map">
-      <div class="big-icon">📍</div>
-      <h4>Based in Dubai, UAE</h4>
-      <p>Serving businesses across Dubai, Sharjah, Abu Dhabi and all over UAE. Fast delivery guaranteed!</p>
-      <a href="https://wa.me/971581464106" class="whatsapp-btn">💬 WhatsApp Us Now</a>
+    <div class="why-pts rv-r">
+      <div class="why-pt"><div class="why-pt-ic">⚡</div><div><div class="why-pt-t">Fast 48hr Delivery</div><div class="why-pt-d">Order today, receive tomorrow anywhere across Dubai. We know your deadlines matter.</div></div></div>
+      <div class="why-pt"><div class="why-pt-ic">💎</div><div><div class="why-pt-t">Premium Quality Guaranteed</div><div class="why-pt-d">Every order through Diamond Printing Press — certified quality you can feel.</div></div></div>
+      <div class="why-pt"><div class="why-pt-ic">💰</div><div><div class="why-pt-t">Lowest Price Promise</div><div class="why-pt-d">Best rates in Dubai. Show us a cheaper quote — we'll match it, guaranteed.</div></div></div>
+      <div class="why-pt"><div class="why-pt-ic">💬</div><div><div class="why-pt-t">WhatsApp Support 7 Days</div><div class="why-pt-d">Real person, instant reply. No bots, no waiting — just fast, friendly service.</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<div id="portfolio">
+  <div class="port-hd">
+    <div class="s-tag rv">Our Work</div>
+    <h2 class="s-h2 lt rv" style="transition-delay:.1s">Print That Gets Noticed</h2>
+    <p class="s-sub lt rv" style="transition-delay:.2s">Real work for real Dubai businesses. Every piece crafted with care.</p>
+  </div>
+  <div class="port-grid">
+    <div class="pc p1 rv"><div class="pc-lbl">Business Cards</div><div class="pc-ov"><div class="pc-t">Premium Cards</div><div class="pc-s">Glossy · Matte · Spot UV</div></div></div>
+    <div class="pc p2 rv" style="transition-delay:.08s"><div class="pc-lbl">Flyers</div><div class="pc-ov"><div class="pc-t">A4 Flyers</div><div class="pc-s">Full Color Print</div></div></div>
+    <div class="pc p3 rv" style="transition-delay:.16s"><div class="pc-lbl">Branding</div><div class="pc-ov"><div class="pc-t">Brand Design</div><div class="pc-s">Logo · Identity</div></div></div>
+    <div class="pc p4 rv" style="transition-delay:.24s"><div class="pc-lbl">Banners</div><div class="pc-ov"><div class="pc-t">Roll-up Banners</div><div class="pc-s">Large Format</div></div></div>
+    <div class="pc p5 rv" style="transition-delay:.32s"><div class="pc-lbl">Marketing</div><div class="pc-ov"><div class="pc-t">Marketing Collateral</div><div class="pc-s">Complete Package</div></div></div>
+  </div>
+</div>
+
+<section id="testimonials">
+  <div class="s-tag rv">Client Reviews</div>
+  <h2 class="s-h2 rv" style="transition-delay:.1s">What Our Clients Say</h2>
+  <p class="s-sub rv" style="transition-delay:.2s">Trusted by 500+ Dubai businesses — here's what they think.</p>
+  <div class="ts-grid">
+    <div class="ts-c rv" style="transition-delay:.05s"><div class="ts-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="ts-txt">"Fastest printing in Dubai! Ordered business cards in the evening, received them next morning. Quality was absolutely amazing."</p><div class="ts-auth"><div class="ts-av">AK</div><div><div class="ts-nm">Ahmed Khalil</div><div class="ts-rl">Business Owner, Dubai</div></div></div></div>
+    <div class="ts-c rv" style="transition-delay:.1s"><div class="ts-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="ts-txt">"Ordered event flyers for a last-minute event. Printsy delivered on time with beautiful print quality. Will order again!"</p><div class="ts-auth"><div class="ts-av">SM</div><div><div class="ts-nm">Sara Mohammed</div><div class="ts-rl">Event Planner, Dubai</div></div></div></div>
+    <div class="ts-c rv" style="transition-delay:.15s"><div class="ts-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="ts-txt">"Best print quality and pricing in Dubai. Spot UV cards for my restaurant looked incredibly premium. Staff loved them!"</p><div class="ts-auth"><div class="ts-av">RT</div><div><div class="ts-nm">Ravi Thakur</div><div class="ts-rl">Restaurant Owner, Dubai</div></div></div></div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="s-tag rv">Transparent Pricing</div>
+  <h2 class="s-h2 rv" style="transition-delay:.1s">Simple, Honest Prices</h2>
+  <p class="s-sub rv" style="transition-delay:.2s">No hidden fees. No surprises. What you see is what you pay — delivered to your door.</p>
+  <div class="pr-grid">
+    <div class="pr-c rv-sc" style="transition-delay:.05s"><div class="pr-prod">Business Cards</div><div class="pr-nm">Glossy Standard</div><div class="pr-qty">500 pieces · Double sided</div><div class="pr-amt"><span>AED </span>110</div><div class="pr-div"></div><ul class="pr-feats"><li>500 Glossy Business Cards</li><li>Full Color Both Sides</li><li>High Gloss UV Coat</li><li>Dubai Delivery AED 30</li></ul><a href="https://wa.me/971581464106" class="pr-btn" target="_blank"><span>Order on WhatsApp</span></a></div>
+    <div class="pr-c ft rv-sc" style="transition-delay:.1s"><div class="pr-bdg">Most Popular</div><div class="pr-prod">Business Cards</div><div class="pr-nm lt">Glossy Premium</div><div class="pr-qty" style="color:rgba(255,255,255,.32)">1000 pieces · Double sided</div><div class="pr-amt lt"><span style="color:rgba(255,255,255,.4)">AED </span>129</div><div class="pr-div lt"></div><ul class="pr-feats"><li class="lt">1000 Glossy Cards</li><li class="lt">Full Color Both Sides</li><li class="lt">High Gloss UV Coat</li><li class="lt">Dubai Delivery AED 30</li></ul><a href="https://wa.me/971581464106" class="pr-btn gd" target="_blank"><span>Order on WhatsApp</span></a></div>
+    <div class="pr-c rv-sc" style="transition-delay:.15s"><div class="pr-prod">Business Cards</div><div class="pr-nm">Spot UV Luxury</div><div class="pr-qty">1000 pieces · Premium finish</div><div class="pr-amt"><span>AED </span>199</div><div class="pr-div"></div><ul class="pr-feats"><li>1000 Spot UV Cards</li><li>Selective UV Coating</li><li>Luxury Premium Finish</li><li>Dubai Delivery AED 30</li></ul><a href="https://wa.me/971581464106" class="pr-btn" target="_blank"><span>Order on WhatsApp</span></a></div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="cta-mq">PRINTSY · PRINT FAST · PRINT SMART · DUBAI · PRINTSY · PRINT FAST · PRINT SMART · DUBAI · </div>
+  <div class="cta-in">
+    <h2 class="cta-h2 rv">Ready to Print?<br>Let's Talk.</h2>
+    <p class="cta-sub rv" style="transition-delay:.1s">Get your free quote in minutes — just send us a WhatsApp.</p>
+    <div class="cta-bts rv" style="transition-delay:.2s">
+      <a href="https://wa.me/971581464106" class="bwg" target="_blank">💬 WhatsApp Us Now</a>
+      <a href="mailto:printsydubai@gmail.com" class="bdk">✉️ Send an Email</a>
+    </div>
+    <div class="cta-cts rv" style="transition-delay:.3s">
+      <div class="cta-ci">📞 +971 581 464 106</div>
+      <div class="cta-ci">✉️ printsydubai@gmail.com</div>
+      <div class="cta-ci">📍 Dubai, UAE</div>
+    </div>
+  </div>
+</section>
+
 <footer>
-  <div class="footer-top">
+  <div class="ft-gr">
     <div>
-      <div class="footer-logo">🖨️ Print<span>sy</span></div>
-      <div class="footer-tagline">Your Complete Print & Digital Agency — Dubai, UAE</div>
+      <div class="ft-logo">Printsy</div>
+      <div class="ft-stag">Printing &amp; Advertising · Dubai</div>
+      <p class="ft-desc">Print Smart. Print Fast. Dubai's most trusted printing partner — quality you can feel, prices you'll love.</p>
+      <div class="ft-socs">
+        <a href="#" class="ft-soc">in</a><a href="#" class="ft-soc">fb</a><a href="#" class="ft-soc">ig</a>
+        <a href="https://wa.me/971581464106" class="ft-soc" target="_blank">wa</a>
+      </div>
     </div>
-    <div class="footer-links">
-      <a href="#print">Print Services</a>
-      <a href="#digital">Digital</a>
-      <a href="#software">Software</a>
-      <a href="#why">Why Us</a>
-      <a href="#contact">Contact</a>
+    <div><div class="ft-ct">Quick Links</div><ul class="ft-lks"><li><a href="#services">Printing</a></li><li><a href="#digital">Digital Services</a></li><li><a href="#showcase">Products</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#testimonials">Reviews</a></li></ul></div>
+    <div><div class="ft-ct">Services</div><ul class="ft-lks"><li><a href="#">Business Cards</a></li><li><a href="#">Flyers</a></li><li><a href="#">Banners</a></li><li><a href="#">Spot UV</a></li><li><a href="#">Brochures</a></li><li><a href="#">Design</a></li></ul></div>
+    <div>
+      <div class="ft-ct">Contact Us</div>
+      <div class="ft-ci"><span class="ft-ci-ic">💬</span><div class="ft-ci-tx"><a href="https://wa.me/971581464106" target="_blank">+971 581 464 106</a></div></div>
+      <div class="ft-ci"><span class="ft-ci-ic">✉️</span><div class="ft-ci-tx"><a href="mailto:printsydubai@gmail.com">printsydubai@gmail.com</a></div></div>
+      <div class="ft-ci"><span class="ft-ci-ic">📍</span><div class="ft-ci-tx">Dubai, United Arab Emirates</div></div>
+      <div class="ft-ci"><span class="ft-ci-ic">🕐</span><div class="ft-ci-tx">Mon–Sat: 9:00 AM – 7:00 PM</div></div>
     </div>
   </div>
-  <div class="footer-bottom">
-    <div class="footer-copy">© 2026 <strong>Printsy – Printing & Advertising</strong> | Dubai, UAE | All Rights Reserved</div>
-    <div class="footer-socials">
-      <a href="#" class="social-btn">📘</a>
-      <a href="#" class="social-btn">📸</a>
-      <a href="#" class="social-btn">💼</a>
-    </div>
+  <div class="ft-bot">
+    <div class="ft-cp">© 2025 Printsy – Printing &amp; Advertising. All rights reserved.</div>
+    <div class="ft-pt">Powered by <span>Diamond Printing Press</span></div>
   </div>
 </footer>
 
-<!-- BACK TO TOP -->
-<a href="#" class="back-top" id="backTop">↑</a>
+<a href="https://wa.me/971581464106" class="f-wa" target="_blank" aria-label="WhatsApp us">💬<div class="f-wa-tp">Chat on WhatsApp</div></a>
 
 <script>
-  // Loader
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.getElementById('loader').classList.add('hide');
-    }, 2000);
+// LOADER
+let p=0;const lp=document.getElementById('ldpct');
+const li=setInterval(()=>{p=Math.min(p+(Math.random()*9+3),99);lp.textContent=Math.floor(p)+'%';if(p>=99)clearInterval(li)},55);
+window.addEventListener('load',()=>{
+  p=100;lp.textContent='100%';
+  setTimeout(()=>{
+    const l=document.getElementById('loader');
+    l.style.transition='opacity .8s,transform .8s';
+    l.style.opacity='0';l.style.transform='scale(1.06)';
+    setTimeout(()=>l.remove(),800);
+  },2600);
+});
+
+// CURSOR
+const cur=document.getElementById('cur'),ring=document.getElementById('cur-r');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function aR(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=Math.round(rx)+'px';ring.style.top=Math.round(ry)+'px';requestAnimationFrame(aR)})();
+document.querySelectorAll('a,button,.srv-c,.pc,.why-pt,.ts-c,.pr-c,.st-it,.sh-c').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
+});
+
+// SCROLL
+window.addEventListener('scroll',()=>{
+  const pct=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  document.getElementById('pb').style.width=pct+'%';
+  document.getElementById('nav').classList.toggle('sc',window.scrollY>60);
+});
+
+// HERO TITLE
+const wds=[{t:'Premium',g:false},{t:'Printing,',g:false},{t:'Delivered',g:false},{t:'Fast.',g:true}];
+const ht=document.getElementById('htitle');
+wds.forEach((w,wi)=>{
+  const sp=document.createElement('span');sp.className='wd';
+  w.t.split('').forEach((c,ci)=>{
+    const ch=document.createElement('span');
+    ch.className='ch'+(w.g?' gw':'');
+    ch.textContent=c===' '?'\u00A0':c;
+    ch.style.animationDelay=(2.9+wi*.22+ci*.048)+'s';
+    sp.appendChild(ch);
   });
+  ht.appendChild(sp);
+  if(wi<wds.length-1)ht.appendChild(document.createTextNode(' '));
+});
 
-  // Navbar scroll
-  window.addEventListener('scroll', () => {
-    const nav = document.getElementById('navbar');
-    const backTop = document.getElementById('backTop');
-    if(window.scrollY > 80) {
-      nav.classList.add('scrolled');
-      backTop.classList.add('show');
-    } else {
-      nav.classList.remove('scrolled');
-      backTop.classList.remove('show');
-    }
+// PARTICLES
+const ptc=document.getElementById('pts');
+for(let i=0;i<40;i++){
+  const pt=document.createElement('div');pt.className='pt';
+  const sz=Math.random()*2+1;
+  pt.style.cssText=`left:${Math.random()*100}%;top:${50+Math.random()*50}%;width:${sz}px;height:${sz}px;--d:${3+Math.random()*7}s;--e:${Math.random()*8}s;background:${Math.random()>.7?'rgba(240,192,64,.6)':'rgba(212,160,23,.5)'}`;
+  ptc.appendChild(pt);
+}
+
+// REVEAL
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')})},{threshold:.07,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv,.rv-l,.rv-r,.rv-sc,.rv-rot').forEach(el=>ro.observe(el));
+
+// COUNTER
+function aC(el,t){let v=0;const s=t/(2400/16);const ti=setInterval(()=>{v=Math.min(v+s,t);el.textContent=t>=1000?Math.floor(v).toLocaleString()+'+':Math.floor(v)+'+';if(v>=t)clearInterval(ti)},16)}
+const co=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const t=parseInt(e.target.dataset.count);if(t)aC(e.target,t);co.unobserve(e.target)}})},{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>co.observe(el));
+
+// MOBILE MENU
+const hbg=document.getElementById('hbg'),mob=document.getElementById('mob');
+hbg.addEventListener('click',()=>{hbg.classList.toggle('op');mob.classList.toggle('op')});
+function cM(){hbg.classList.remove('op');mob.classList.remove('op')}
+
+// 3D TILT - service cards
+document.querySelectorAll('.srv-c').forEach(c=>{
+  c.addEventListener('mousemove',e=>{
+    const r=c.getBoundingClientRect();
+    const x=((e.clientX-r.left)/r.width-.5)*16;
+    const y=((e.clientY-r.top)/r.height-.5)*-16;
+    c.style.transform=`translateY(-14px) rotateX(${y}deg) rotateY(${x}deg)`;
+    c.style.transformStyle='preserve-3d';
   });
+  c.addEventListener('mouseleave',()=>{c.style.transform='';c.style.transformStyle=''});
+});
 
-  // Reveal on scroll
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if(entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, i * 60);
-      }
-    });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
+// 3D TILT - showcase cards
+document.querySelectorAll('.sh-c').forEach(c=>{
+  c.addEventListener('mousemove',e=>{
+    const r=c.getBoundingClientRect();
+    const x=((e.clientX-r.left)/r.width-.5)*12;
+    const y=((e.clientY-r.top)/r.height-.5)*-12;
+    c.style.transform=`translateY(-18px) scale(1.03) rotateX(${y}deg) rotateY(${x}deg)`;
+    c.style.transformStyle='preserve-3d';
+  });
+  c.addEventListener('mouseleave',()=>{c.style.transform='';c.style.transformStyle=''});
+});
 
-  // Mobile menu
-  function toggleMenu() {
-    const links = document.querySelector('.nav-links');
-    links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
-    links.style.flexDirection = 'column';
-    links.style.position = 'absolute';
-    links.style.top = '70px';
-    links.style.left = '0';
-    links.style.right = '0';
-    links.style.background = '#0d0d1a';
-    links.style.padding = '20px';
-    links.style.borderBottom = '1px solid rgba(255,215,0,0.15)';
-  }
+// MAGNETIC buttons
+document.querySelectorAll('.bwa,.bgh,.bdk,.bwg,.n-cta').forEach(btn=>{
+  btn.addEventListener('mousemove',e=>{
+    const r=btn.getBoundingClientRect();
+    const x=(e.clientX-r.left-r.width/2)*.22;
+    const y=(e.clientY-r.top-r.height/2)*.22;
+    btn.style.transform=`translateY(-4px) translate(${x}px,${y}px)`;
+  });
+  btn.addEventListener('mouseleave',()=>btn.style.transform='');
+});
+
+// PORTFOLIO parallax on hover
+document.querySelectorAll('.pc').forEach(c=>{
+  c.addEventListener('mousemove',e=>{
+    const r=c.getBoundingClientRect();
+    const x=((e.clientX-r.left)/r.width-.5)*8;
+    const y=((e.clientY-r.top)/r.height-.5)*8;
+    c.style.backgroundPosition=`calc(50% + ${x}px) calc(50% + ${y}px)`;
+  });
+  c.addEventListener('mouseleave',()=>c.style.backgroundPosition='center');
+});
 </script>
 </body>
 </html>
