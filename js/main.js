@@ -21,10 +21,10 @@ window.addEventListener('scroll',()=>{
 
 // ── LOADER GSAP ──
 const tl=gsap.timeline({onComplete:startSite});
-tl.to('.ld-logo',{opacity:1,y:0,duration:.8,ease:'power3.out'},0.3)
-  .to('.ld-sub',{opacity:1,y:0,duration:.6,ease:'power2.out'},0.9)
-  .to('.ld-num',{opacity:1,duration:.4},1.1)
-  .to('.ld-fill',{width:'100%',duration:2,ease:'power2.inOut'},0.5);
+tl.to('.ld-logo',{opacity:1,y:0,duration:.3,ease:'power3.out'},0.1)
+  .to('.ld-sub',{opacity:1,y:0,duration:.25,ease:'power2.out'},0.3)
+  .to('.ld-num',{opacity:1,duration:.15},0.35)
+  .to('.ld-fill',{width:'100%',duration:.7,ease:'power2.inOut'},0.15);
 
 // counter
 let n=0;
